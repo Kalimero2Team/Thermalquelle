@@ -1,0 +1,5 @@
+.idea/
+patched-geyser/
+.gradle/
+*.hprof
+build/

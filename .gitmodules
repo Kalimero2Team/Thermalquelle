@@ -1,0 +1,3 @@
+[submodule "Geyser"]
+	path = Geyser
+	url = git@github.com:GeyserMC/Geyser.git
