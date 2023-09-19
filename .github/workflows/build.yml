@@ -26,4 +26,4 @@ jobs:
       - name: "apply patches"
         run: "git submodule update --init && ./gradlew applyPatches"
       - name: "build"
-        run: "cd patched-loom && ./gradlew build -x check"
+        run: "cd patched-geyser && ./gradlew build -x check"
