@@ -26,4 +26,49 @@ jobs:
       - name: "apply patches"
         run: "git submodule update --init && ./gradlew applyPatches"
       - name: "build"
-        run: "cd patched-geyser && ./gradlew build -x check"
+        working-directory: "patched-geyser"
+        run: "./gradlew build -x check"
+
+      - name: Archive artifacts (Geyser Fabric)
+        # See https://github.com/actions/upload-artifact/commits
+        uses: actions/upload-artifact@a8a3f3ad30e3422c9c7b888a15615d19a852ae32
+        if: success()
+        with:
+          name: Geyser Fabric
+          path: patched-geyser/bootstrap/fabric/build/libs/Geyser-Fabric.jar
+          if-no-files-found: error
+      - name: Archive artifacts (Geyser Standalone)
+        uses: actions/upload-artifact@a8a3f3ad30e3422c9c7b888a15615d19a852ae32
+        if: success()
+        with:
+          name: Geyser Standalone
+          path: patched-geyser/bootstrap/standalone/build/libs/Geyser-Standalone.jar
+          if-no-files-found: error
+      - name: Archive artifacts (Geyser Spigot)
+        uses: actions/upload-artifact@a8a3f3ad30e3422c9c7b888a15615d19a852ae32
+        if: success()
+        with:
+          name: Geyser Spigot
+          path: patched-geyser/bootstrap/spigot/build/libs/Geyser-Spigot.jar
+          if-no-files-found: error
+      - name: Archive artifacts (Geyser BungeeCord)
+        uses: actions/upload-artifact@a8a3f3ad30e3422c9c7b888a15615d19a852ae32
+        if: success()
+        with:
+          name: Geyser BungeeCord
+          path: patched-geyser/bootstrap/bungeecord/build/libs/Geyser-BungeeCord.jar
+          if-no-files-found: error
+      - name: Archive artifacts (Geyser Velocity)
+        uses: actions/upload-artifact@a8a3f3ad30e3422c9c7b888a15615d19a852ae32
+        if: success()
+        with:
+          name: Geyser Velocity
+          path: patched-geyser/bootstrap/velocity/build/libs/Geyser-Velocity.jar
+          if-no-files-found: error
+      - name: Publish to Maven Repository
+        if: ${{ success() && github.repository == 'Kalimero2Team/Thermalquelle' && (github.ref_name == 'dev' || github.ref_name == 'main') }}
+        working-directory: "patched-geyser"
+        env:
+          ORG_GRADLE_PROJECT_kalimero2Username: ${{ secrets.KALIMERO2_REPO_USERNAME }}
+          ORG_GRADLE_PROJECT_kalimero2Password: ${{ secrets.KALIMERO2_REPO_SECRET }}
+        run: "./gradlew publish"

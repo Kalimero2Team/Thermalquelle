@@ -1,0 +1,34 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: byquanton <32410361+byquanton@users.noreply.github.com>
+Date: Mon, 2 Oct 2023 11:43:24 +0000
+Subject: [PATCH] Publish to our Repo
+
+
+diff --git a/build-logic/src/main/kotlin/geyser.publish-conventions.gradle.kts b/build-logic/src/main/kotlin/geyser.publish-conventions.gradle.kts
+index 036ee803c89cb21d52cfaf7d1df7d5b852f126ce..9c5129f49cf0b85a6d11d5060adb137c5b0ac0a1 100644
+--- a/build-logic/src/main/kotlin/geyser.publish-conventions.gradle.kts
++++ b/build-logic/src/main/kotlin/geyser.publish-conventions.gradle.kts
+@@ -4,6 +4,6 @@ plugins {
+ }
+ 
+ indra {
+-    publishSnapshotsTo("geysermc", "https://repo.opencollab.dev/maven-snapshots")
+-    publishReleasesTo("geysermc", "https://repo.opencollab.dev/maven-releases")
++    publishSnapshotsTo("kalimero2", "https://repo.kalimero2.com/snapshots")
++    publishReleasesTo("kalimero2", "https://repo.kalimero2.com/releases")
+ }
+diff --git a/gradle.properties b/gradle.properties
+index b6425f76dad4c22f3d92ecdab19455af91fac910..d2f996a9f29d632d4618e60f41fa19bd7e1239ef 100644
+--- a/gradle.properties
++++ b/gradle.properties
+@@ -5,7 +5,7 @@ org.gradle.caching=true
+ org.gradle.parallel=true
+ org.gradle.vfs.watch=false
+ 
+-group=org.geysermc
+-id=geyser
++group=com.kalimero2.team
++id=thermalquelle
+ version=2.2.0-SNAPSHOT
+ description=Allows for players from Minecraft: Bedrock Edition to join Minecraft: Java Edition servers.
+\ No newline at end of file
