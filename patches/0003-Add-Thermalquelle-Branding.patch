@@ -1,0 +1,52 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: byquanton <32410361+byquanton@users.noreply.github.com>
+Date: Wed, 4 Oct 2023 21:36:52 +0200
+Subject: [PATCH] Add Thermalquelle Branding
+
+
+diff --git a/core/src/main/java/org/geysermc/geyser/GeyserImpl.java b/core/src/main/java/org/geysermc/geyser/GeyserImpl.java
+index 534651f0e2eba67020df747d0e66dd772e1de198..a4809daf5574a46bb4a83bda30d0713a842172c2 100644
+--- a/core/src/main/java/org/geysermc/geyser/GeyserImpl.java
++++ b/core/src/main/java/org/geysermc/geyser/GeyserImpl.java
+@@ -110,6 +110,7 @@ public class GeyserImpl implements GeyserApi {
+             .enable(JsonParser.Feature.ALLOW_SINGLE_QUOTES);
+ 
+     public static final String NAME = "Geyser";
++    public static final String BRAND_NAME = "Thermalquelle"; // Thermalquelle - Add Brand Name
+     public static final String GIT_VERSION = "${gitVersion}"; // A fallback for running in IDEs
+     public static final String VERSION = "${version}"; // A fallback for running in IDEs
+ 
+@@ -184,7 +185,7 @@ public class GeyserImpl implements GeyserApi {
+ 
+         logger.info("******************************************");
+         logger.info("");
+-        logger.info(GeyserLocale.getLocaleStringLog("geyser.core.load", NAME, VERSION));
++        logger.info(GeyserLocale.getLocaleStringLog("geyser.core.load", BRAND_NAME, VERSION)); // Thermalquelle - Change to BRAND_NAME
+         logger.info("");
+         logger.info("******************************************");
+ 
+diff --git a/core/src/main/java/org/geysermc/geyser/command/defaults/VersionCommand.java b/core/src/main/java/org/geysermc/geyser/command/defaults/VersionCommand.java
+index b263d672733de2310be3215d02573bbab0dbb362..163b00b4efe5d52d52128112cbbef8f3b95da2fb 100644
+--- a/core/src/main/java/org/geysermc/geyser/command/defaults/VersionCommand.java
++++ b/core/src/main/java/org/geysermc/geyser/command/defaults/VersionCommand.java
+@@ -70,8 +70,10 @@ public class VersionCommand extends GeyserCommand {
+         }
+ 
+         sender.sendMessage(GeyserLocale.getPlayerLocaleString("geyser.commands.version.version", sender.locale(),
+-                GeyserImpl.NAME, GeyserImpl.VERSION, javaVersions, bedrockVersions));
++                GeyserImpl.BRAND_NAME, GeyserImpl.VERSION, javaVersions, bedrockVersions)); // Thermalquelle - Change to BRAND_NAME
+ 
++        // Thermalquelle start - remove update checking
++        /*
+         // Disable update checking in dev mode and for players in Geyser Standalone
+         if (GeyserImpl.getInstance().isProductionEnvironment() && !(!sender.isConsole() && geyser.getPlatformType() == PlatformType.STANDALONE)) {
+             sender.sendMessage(GeyserLocale.getPlayerLocaleString("geyser.commands.version.checking", sender.locale()));
+@@ -95,6 +97,8 @@ public class VersionCommand extends GeyserCommand {
+                 sender.sendMessage(ChatColor.RED + GeyserLocale.getPlayerLocaleString("geyser.commands.version.failed", sender.locale()));
+             }
+         }
++        */
++        // Thermalquelle end
+     }
+ 
+     @Override

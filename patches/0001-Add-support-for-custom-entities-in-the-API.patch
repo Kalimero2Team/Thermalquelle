@@ -483,7 +483,7 @@ index 0000000000000000000000000000000000000000..4dce40d5fdd640bb904381a0cbba6042
 +}
 \ No newline at end of file
 diff --git a/core/src/main/java/org/geysermc/geyser/GeyserImpl.java b/core/src/main/java/org/geysermc/geyser/GeyserImpl.java
-index 4a5f16bfa7e060b928971f2ed620b2f8516b98ee..61a9742245c33980133b6253f1c8cdb390eb57bd 100644
+index 185ab7c2a6d35bfafee30c2a979f2a6f7c4eca6e..534651f0e2eba67020df747d0e66dd772e1de198 100644
 --- a/core/src/main/java/org/geysermc/geyser/GeyserImpl.java
 +++ b/core/src/main/java/org/geysermc/geyser/GeyserImpl.java
 @@ -213,6 +213,9 @@ public class GeyserImpl implements GeyserApi {
@@ -4588,10 +4588,10 @@ index 13d7a4d77d867ffb876df63164294db4352efff0..7c3370d54367f1279e835c7bdf2839e1
      }
  }
 diff --git a/core/src/main/java/org/geysermc/geyser/session/GeyserSession.java b/core/src/main/java/org/geysermc/geyser/session/GeyserSession.java
-index 5c9725fae0b2b1949d26d538e0c708bdefc539eb..92f8feeaddae3f30365866700fabc09e7ae47388 100644
+index 673ff5f3781c9a0230ab5abe0880f6c6f0410515..5bcb09a3e01dfc5bd94e7b05fe8a8e0a794f917a 100644
 --- a/core/src/main/java/org/geysermc/geyser/session/GeyserSession.java
 +++ b/core/src/main/java/org/geysermc/geyser/session/GeyserSession.java
-@@ -85,6 +85,8 @@ import org.checkerframework.checker.nullness.qual.Nullable;
+@@ -82,6 +82,8 @@ import org.checkerframework.checker.nullness.qual.Nullable;
  import org.checkerframework.common.value.qual.IntRange;
  import org.cloudburstmc.math.vector.*;
  import org.cloudburstmc.nbt.NbtMap;
@@ -4600,7 +4600,7 @@ index 5c9725fae0b2b1949d26d538e0c708bdefc539eb..92f8feeaddae3f30365866700fabc09e
  import org.cloudburstmc.protocol.bedrock.BedrockDisconnectReasons;
  import org.cloudburstmc.protocol.bedrock.BedrockServerSession;
  import org.cloudburstmc.protocol.bedrock.data.*;
-@@ -106,9 +108,11 @@ import org.geysermc.geyser.Constants;
+@@ -103,9 +105,11 @@ import org.geysermc.geyser.Constants;
  import org.geysermc.geyser.GeyserImpl;
  import org.geysermc.geyser.api.bedrock.camera.CameraShake;
  import org.geysermc.geyser.api.connection.GeyserConnection;
@@ -4612,7 +4612,7 @@ index 5c9725fae0b2b1949d26d538e0c708bdefc539eb..92f8feeaddae3f30365866700fabc09e
  import org.geysermc.geyser.api.network.AuthType;
  import org.geysermc.geyser.api.network.RemoteServer;
  import org.geysermc.geyser.api.util.PlatformType;
-@@ -116,6 +120,7 @@ import org.geysermc.geyser.command.GeyserCommandSource;
+@@ -113,6 +117,7 @@ import org.geysermc.geyser.command.GeyserCommandSource;
  import org.geysermc.geyser.configuration.EmoteOffhandWorkaroundOption;
  import org.geysermc.geyser.configuration.GeyserConfiguration;
  import org.geysermc.geyser.entity.EntityDefinitions;
@@ -4620,7 +4620,7 @@ index 5c9725fae0b2b1949d26d538e0c708bdefc539eb..92f8feeaddae3f30365866700fabc09e
  import org.geysermc.geyser.entity.attribute.GeyserAttributeType;
  import org.geysermc.geyser.entity.type.Entity;
  import org.geysermc.geyser.entity.type.ItemFrameEntity;
-@@ -160,6 +165,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
+@@ -157,6 +162,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
  import java.util.concurrent.ScheduledFuture;
  import java.util.concurrent.TimeUnit;
  import java.util.concurrent.atomic.AtomicInteger;
@@ -4628,7 +4628,7 @@ index 5c9725fae0b2b1949d26d538e0c708bdefc539eb..92f8feeaddae3f30365866700fabc09e
  
  @Getter
  public class GeyserSession implements GeyserConnection, GeyserCommandSource {
-@@ -662,9 +668,7 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
+@@ -655,9 +661,7 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
          biomeDefinitionListPacket.setDefinitions(Registries.BIOMES_NBT.get());
          upstream.sendPacket(biomeDefinitionListPacket);
  
@@ -4639,7 +4639,7 @@ index 5c9725fae0b2b1949d26d538e0c708bdefc539eb..92f8feeaddae3f30365866700fabc09e
  
          CreativeContentPacket creativePacket = new CreativeContentPacket();
          creativePacket.setContents(this.itemMappings.getCreativeItems());
-@@ -700,6 +704,36 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
+@@ -693,6 +697,36 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
          upstream.sendPacket(gamerulePacket);
      }
  
@@ -4674,8 +4674,8 @@ index 5c9725fae0b2b1949d26d538e0c708bdefc539eb..92f8feeaddae3f30365866700fabc09e
 +    }
 +
      public void authenticate(String username) {
-         authenticate(username, "");
-     }
+         if (loggedIn) {
+             geyser.getLogger().severe(GeyserLocale.getLocaleStringLog("geyser.auth.already_loggedin", username));
 diff --git a/core/src/main/java/org/geysermc/geyser/translator/level/block/entity/SpawnerBlockEntityTranslator.java b/core/src/main/java/org/geysermc/geyser/translator/level/block/entity/SpawnerBlockEntityTranslator.java
 index d1af70d8d4579b491d16db0c950c42174da976e2..bdcc86f4b869384a2d6aa7c8b25f333f0c39b02b 100644
 --- a/core/src/main/java/org/geysermc/geyser/translator/level/block/entity/SpawnerBlockEntityTranslator.java
