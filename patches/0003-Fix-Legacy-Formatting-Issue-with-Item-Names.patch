@@ -1,0 +1,22 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: byquanton <32410361+byquanton@users.noreply.github.com>
+Date: Sun, 15 Oct 2023 15:31:47 +0200
+Subject: [PATCH] Fix Legacy Formatting Issue with Item Names
+
+
+diff --git a/core/src/main/java/org/geysermc/geyser/translator/text/MessageTranslator.java b/core/src/main/java/org/geysermc/geyser/translator/text/MessageTranslator.java
+index 5f811ab4939e2dc030e936f24443b595f179d8f6..76d8912b3bbc76cc5c4e4251e75dabd2a1c7e94a 100644
+--- a/core/src/main/java/org/geysermc/geyser/translator/text/MessageTranslator.java
++++ b/core/src/main/java/org/geysermc/geyser/translator/text/MessageTranslator.java
+@@ -215,9 +215,9 @@ public class MessageTranslator {
+             return message;
+         }
+ 
+-        try {
++        if(!message.contains("§")) {
+             return convertJsonMessage(message, locale);
+-        } catch (Exception ignored) {
++        } else {
+             // Use the default legacy serializer since message is java-legacy
+             String convertedMessage = convertMessage(LegacyComponentSerializer.legacySection().deserialize(message), locale);
+ 
