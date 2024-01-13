@@ -1,0 +1,68 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: byquanton <32410361+byquanton@users.noreply.github.com>
+Date: Sat, 13 Jan 2024 17:48:14 +0100
+Subject: [PATCH] Add Show Statistics Toggle to Open Menu from Settings
+
+
+diff --git a/core/src/main/java/org/geysermc/geyser/util/SettingsUtils.java b/core/src/main/java/org/geysermc/geyser/util/SettingsUtils.java
+index ed97408b9965ac1b36b9b5c1912e2553dcc069bc..b46abcb88a32fbe39e6d41bcaa3caf6c4a3a0b81 100644
+--- a/core/src/main/java/org/geysermc/geyser/util/SettingsUtils.java
++++ b/core/src/main/java/org/geysermc/geyser/util/SettingsUtils.java
+@@ -25,6 +25,8 @@
+ 
+ package org.geysermc.geyser.util;
+ 
++import com.github.steveice10.mc.protocol.data.game.ClientCommand;
++import com.github.steveice10.mc.protocol.packet.ingame.serverbound.ServerboundClientCommandPacket;
+ import org.geysermc.cumulus.component.DropdownComponent;
+ import org.geysermc.cumulus.form.CustomForm;
+ import org.geysermc.geyser.GeyserImpl;
+@@ -34,6 +36,8 @@ import org.geysermc.geyser.session.GeyserSession;
+ import org.geysermc.geyser.text.GeyserLocale;
+ import org.geysermc.geyser.text.MinecraftLocale;
+ 
++import java.util.concurrent.TimeUnit;
++
+ public class SettingsUtils {
+     /**
+      * Build a settings form for the given session and store it for later
+@@ -53,13 +57,18 @@ public class SettingsUtils {
+         boolean showCoordinates = session.getPreferencesCache().isAllowShowCoordinates();
+         boolean cooldownShown = CooldownUtils.getDefaultShowCooldown() != CooldownUtils.CooldownType.DISABLED;
+         boolean customSkulls = session.getGeyser().getConfig().isAllowCustomSkulls();
++        boolean showStatistics = true;
+ 
+         // Only show the client title if any of the client settings are available
+-        boolean showClientSettings = showCoordinates || cooldownShown || customSkulls;
++        boolean showClientSettings = showCoordinates || cooldownShown || customSkulls || showStatistics;
+ 
+         if (showClientSettings) {
+             builder.label("geyser.settings.title.client");
+ 
++            if (showStatistics) {
++                builder.toggle("geyser.settings.option.showStatistics", false);
++            }
++
+             // Client can only see its coordinates if reducedDebugInfo is disabled and coordinates are enabled in geyser config.
+             if (showCoordinates) {
+                 builder.toggle("%createWorldScreen.showCoordinates", session.getPreferencesCache().isPrefersShowCoordinates());
+@@ -97,6 +106,19 @@ public class SettingsUtils {
+ 
+         builder.validResultHandler((response) -> {
+             if (showClientSettings) {
++
++                if (showStatistics) {
++                    boolean show = response.next();
++                    if(show){
++                        session.scheduleInEventLoop(() -> {
++                            session.setWaitingForStatistics(true);
++                            ServerboundClientCommandPacket ServerboundClientCommandPacket = new ServerboundClientCommandPacket(ClientCommand.STATS);
++                            session.sendDownstreamGamePacket(ServerboundClientCommandPacket);
++                        },1, TimeUnit.SECONDS);
++                    }
++                }
++
++
+                 // Client can only see its coordinates if reducedDebugInfo is disabled and coordinates are enabled in geyser config.
+                 if (showCoordinates) {
+                     // In theory, a server could update the gamerule while the client is in the settings menu.
