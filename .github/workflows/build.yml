@@ -22,7 +22,7 @@ jobs:
       - name: "configure git"
         run: git config --global user.email "actions@github.com" && git config --global user.name "Github Actions"
       - name: "setup gradle"
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v3
       - name: "apply patches"
         run: "git submodule update --init && ./gradlew applyPatches"
       - name: "build"
