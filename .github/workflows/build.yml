@@ -31,35 +31,35 @@ jobs:
 
       - name: Archive artifacts (Geyser Fabric)
         # See https://github.com/actions/upload-artifact/commits
-        uses: actions/upload-artifact@26f96dfa697d77e81fd5907df203aa23a56210a8
+        uses: actions/upload-artifact@d00351bf698398c17253d21cf8f90e57a344e14b
         if: success()
         with:
           name: Geyser Fabric
           path: patched-geyser/bootstrap/fabric/build/libs/Geyser-Fabric.jar
           if-no-files-found: error
       - name: Archive artifacts (Geyser Standalone)
-        uses: actions/upload-artifact@26f96dfa697d77e81fd5907df203aa23a56210a8
+        uses: actions/upload-artifact@d00351bf698398c17253d21cf8f90e57a344e14b
         if: success()
         with:
           name: Geyser Standalone
           path: patched-geyser/bootstrap/standalone/build/libs/Geyser-Standalone.jar
           if-no-files-found: error
       - name: Archive artifacts (Geyser Spigot)
-        uses: actions/upload-artifact@26f96dfa697d77e81fd5907df203aa23a56210a8
+        uses: actions/upload-artifact@d00351bf698398c17253d21cf8f90e57a344e14b
         if: success()
         with:
           name: Geyser Spigot
           path: patched-geyser/bootstrap/spigot/build/libs/Geyser-Spigot.jar
           if-no-files-found: error
       - name: Archive artifacts (Geyser BungeeCord)
-        uses: actions/upload-artifact@26f96dfa697d77e81fd5907df203aa23a56210a8
+        uses: actions/upload-artifact@d00351bf698398c17253d21cf8f90e57a344e14b
         if: success()
         with:
           name: Geyser BungeeCord
           path: patched-geyser/bootstrap/bungeecord/build/libs/Geyser-BungeeCord.jar
           if-no-files-found: error
       - name: Archive artifacts (Geyser Velocity)
-        uses: actions/upload-artifact@26f96dfa697d77e81fd5907df203aa23a56210a8
+        uses: actions/upload-artifact@d00351bf698398c17253d21cf8f90e57a344e14b
         if: success()
         with:
           name: Geyser Velocity
