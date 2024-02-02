@@ -5,18 +5,18 @@ Subject: [PATCH] Add Thermalquelle Branding
 
 
 diff --git a/core/src/main/java/org/geysermc/geyser/GeyserImpl.java b/core/src/main/java/org/geysermc/geyser/GeyserImpl.java
-index aef2288d6f4d38906176b54e44c565477ef1aebb..c41f0ccae38a486240222b7d5da5dd540833f564 100644
+index e9ea0826080196b3ca6e351efb95aa544102e39d..1ac01a8a45fe72fa667ea6090b886083b48274fd 100644
 --- a/core/src/main/java/org/geysermc/geyser/GeyserImpl.java
 +++ b/core/src/main/java/org/geysermc/geyser/GeyserImpl.java
-@@ -111,6 +111,7 @@ public class GeyserImpl implements GeyserApi {
+@@ -116,6 +116,7 @@ public class GeyserImpl implements GeyserApi {
              .enable(JsonParser.Feature.ALLOW_SINGLE_QUOTES);
  
      public static final String NAME = "Geyser";
 +    public static final String BRAND_NAME = "Thermalquelle"; // Thermalquelle - Add Brand Name
-     public static final String GIT_VERSION = "${gitVersion}"; // A fallback for running in IDEs
-     public static final String VERSION = "${version}"; // A fallback for running in IDEs
+     public static final String GIT_VERSION = "${gitVersion}";
+     public static final String VERSION = "${version}";
  
-@@ -185,7 +186,7 @@ public class GeyserImpl implements GeyserApi {
+@@ -190,7 +191,7 @@ public class GeyserImpl implements GeyserApi {
  
          logger.info("******************************************");
          logger.info("");
