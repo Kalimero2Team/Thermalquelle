@@ -1,0 +1,18 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: byquanton <32410361+byquanton@users.noreply.github.com>
+Date: Thu, 15 Feb 2024 14:13:53 +0100
+Subject: [PATCH] Fix: Nametags not showing up after respawn
+
+
+diff --git a/core/src/main/java/org/geysermc/geyser/entity/type/player/PlayerEntity.java b/core/src/main/java/org/geysermc/geyser/entity/type/player/PlayerEntity.java
+index 3578ac82b6aaf72cf56c5565b75c683c08e8358e..c3b04402ba12cca6572ded4e446e7226bc59051e 100644
+--- a/core/src/main/java/org/geysermc/geyser/entity/type/player/PlayerEntity.java
++++ b/core/src/main/java/org/geysermc/geyser/entity/type/player/PlayerEntity.java
+@@ -377,6 +377,7 @@ public class PlayerEntity extends LivingEntity implements GeyserPlayerEntity {
+ 
+         if (needsUpdate) {
+             dirtyMetadata.put(EntityDataTypes.NAME, this.nametag);
++            dirtyMetadata.put(EntityDataTypes.NAMETAG_ALWAYS_SHOW, (byte) 1);
+         }
+     }
+ 
