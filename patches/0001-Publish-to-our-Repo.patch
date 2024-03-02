@@ -18,11 +18,11 @@ index 036ee803c89cb21d52cfaf7d1df7d5b852f126ce..9c5129f49cf0b85a6d11d5060adb137c
 +    publishReleasesTo("kalimero2", "https://repo.kalimero2.com/releases")
  }
 diff --git a/gradle.properties b/gradle.properties
-index 74504759edf3703a9ae2a0ffa662d5796e90c711..dc56ad643ffdf4f4936b8054088c985c68a289d2 100644
+index a8e5eaaaf99421c780035a52e8a23f9f219ea8e1..b1a9ed8e85c2fa43f36c2167cbbf294c406f7def 100644
 --- a/gradle.properties
 +++ b/gradle.properties
-@@ -5,7 +5,7 @@ org.gradle.caching=true
- org.gradle.parallel=true
+@@ -5,7 +5,7 @@ org.gradle.parallel=true
+ org.gradle.caching=true
  org.gradle.vfs.watch=false
  
 -group=org.geysermc
