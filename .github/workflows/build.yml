@@ -38,7 +38,7 @@ jobs:
           path: patched-geyser/bootstrap/mod/fabric/build/libs/Geyser-Fabric.jar
           if-no-files-found: error
       - name: Archive artifacts (Geyser NeoForge)
-        uses: actions/upload-artifact@a8a3f3ad30e3422c9c7b888a15615d19a852ae32
+        uses: actions/upload-artifact@ef09cdac3e2d3e60d8ccadda691f4f1cec5035cb
         if: success()
         with:
           name: Geyser NeoForge
@@ -73,7 +73,7 @@ jobs:
           path: patched-geyser/bootstrap/velocity/build/libs/Geyser-Velocity.jar
           if-no-files-found: error
       - name: Archive artifacts (Geyser ViaProxy)
-        uses: actions/upload-artifact@a8a3f3ad30e3422c9c7b888a15615d19a852ae32
+        uses: actions/upload-artifact@ef09cdac3e2d3e60d8ccadda691f4f1cec5035cb
         if: success()
         with:
           name: Geyser ViaProxy
