@@ -86,3 +86,19 @@ jobs:
           ORG_GRADLE_PROJECT_kalimero2Username: ${{ secrets.KALIMERO2_REPO_USERNAME }}
           ORG_GRADLE_PROJECT_kalimero2Password: ${{ secrets.KALIMERO2_REPO_SECRET }}
         run: "./gradlew publish"
+      - name: "Create (Dev Branch) Release"
+        uses: "marvinpinto/action-automatic-releases@latest"
+        if: ${{ success() && github.repository == 'Kalimero2Team/Thermalquelle' && (github.ref_name == 'dev') }}
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest-dev"
+          prerelease: true
+          title: "Development Build"
+          files: |
+            patched-geyser/bootstrap/mod/fabric/build/libs/Geyser-Fabric.jar
+            patched-geyser/bootstrap/mod/neoforge/build/libs/Geyser-NeoForge.jar
+            patched-geyser/bootstrap/standalone/build/libs/Geyser-Standalone.jar
+            patched-geyser/bootstrap/spigot/build/libs/Geyser-Spigot.jar
+            patched-geyser/bootstrap/bungeecord/build/libs/Geyser-BungeeCord.jar
+            patched-geyser/bootstrap/velocity/build/libs/Geyser-Velocity.jar
+            patched-geyser/bootstrap/viaproxy/build/libs/Geyser-ViaProxy.jar
