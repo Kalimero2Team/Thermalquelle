@@ -4,6 +4,18 @@ Date: Mon, 2 Oct 2023 11:43:24 +0000
 Subject: [PATCH] Publish to our Repo
 
 
+diff --git a/build-logic/src/main/kotlin/geyser.modded-conventions.gradle.kts b/build-logic/src/main/kotlin/geyser.modded-conventions.gradle.kts
+index 91bde525e1261d883fe8fb530c89fabcb29ed82e..ac574f52def0d7fdedc9cbd92a74d8b231a7ea29 100644
+--- a/build-logic/src/main/kotlin/geyser.modded-conventions.gradle.kts
++++ b/build-logic/src/main/kotlin/geyser.modded-conventions.gradle.kts
+@@ -109,6 +109,7 @@ dependencies {
+ repositories {
+     maven("https://repo.opencollab.dev/maven-releases/")
+     maven("https://repo.opencollab.dev/maven-snapshots/")
++    maven("https://repo.kalimero2.com/snapshots/")
+     maven("https://jitpack.io")
+     maven("https://oss.sonatype.org/content/repositories/snapshots/")
+     maven("https://s01.oss.sonatype.org/content/repositories/snapshots/")
 diff --git a/build-logic/src/main/kotlin/geyser.publish-conventions.gradle.kts b/build-logic/src/main/kotlin/geyser.publish-conventions.gradle.kts
 index eca5877216da6dc2bd3bdca95a9b8db00ce78522..4588ee52176d093530d4de716435eac07dd4631d 100644
 --- a/build-logic/src/main/kotlin/geyser.publish-conventions.gradle.kts
