@@ -32,10 +32,10 @@ index eca5877216da6dc2bd3bdca95a9b8db00ce78522..4588ee52176d093530d4de716435eac0
  
  publishing {
 diff --git a/gradle.properties b/gradle.properties
-index a8e5eaaaf99421c780035a52e8a23f9f219ea8e1..b1a9ed8e85c2fa43f36c2167cbbf294c406f7def 100644
+index a7c0bf93d71ba74514a8db359a5908a92a2035e1..0b7b7a373110324feb90d751dde0e614a5562e39 100644
 --- a/gradle.properties
 +++ b/gradle.properties
-@@ -5,7 +5,7 @@ org.gradle.parallel=true
+@@ -5,7 +5,8 @@ org.gradle.parallel=true
  org.gradle.caching=true
  org.gradle.vfs.watch=false
  
@@ -43,7 +43,6 @@ index a8e5eaaaf99421c780035a52e8a23f9f219ea8e1..b1a9ed8e85c2fa43f36c2167cbbf294c
 -id=geyser
 +group=com.kalimero2.team
 +id=thermalquelle
- version=2.2.2-SNAPSHOT
--description=Allows for players from Minecraft: Bedrock Edition to join Minecraft: Java Edition servers.
-\ No newline at end of file
-+description=Allows for players from Minecraft: Bedrock Edition to join Minecraft: Java Edition servers.
+ version=2.2.3-SNAPSHOT
++
+ description=Allows for players from Minecraft: Bedrock Edition to join Minecraft: Java Edition servers.
