@@ -5,11 +5,11 @@ Subject: [PATCH] Publish to our Repo
 
 
 diff --git a/build-logic/src/main/kotlin/geyser.modded-conventions.gradle.kts b/build-logic/src/main/kotlin/geyser.modded-conventions.gradle.kts
-index 91bde525e1261d883fe8fb530c89fabcb29ed82e..ac574f52def0d7fdedc9cbd92a74d8b231a7ea29 100644
+index 3d41dbbb4532e3bbe8aeb1a5fec7e814963ef2ea..85d38b0453f84a9a822da06c3e5fe5aff0755e2c 100644
 --- a/build-logic/src/main/kotlin/geyser.modded-conventions.gradle.kts
 +++ b/build-logic/src/main/kotlin/geyser.modded-conventions.gradle.kts
-@@ -109,6 +109,7 @@ dependencies {
- repositories {
+@@ -112,6 +112,7 @@ repositories {
+     // mavenLocal()
      maven("https://repo.opencollab.dev/maven-releases/")
      maven("https://repo.opencollab.dev/maven-snapshots/")
 +    maven("https://repo.kalimero2.com/snapshots/")
