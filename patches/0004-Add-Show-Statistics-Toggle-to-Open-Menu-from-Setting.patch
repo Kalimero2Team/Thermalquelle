@@ -5,27 +5,20 @@ Subject: [PATCH] Add Show Statistics Toggle to Open Menu from Settings
 
 
 diff --git a/core/src/main/java/org/geysermc/geyser/util/SettingsUtils.java b/core/src/main/java/org/geysermc/geyser/util/SettingsUtils.java
-index ed97408b9965ac1b36b9b5c1912e2553dcc069bc..b46abcb88a32fbe39e6d41bcaa3caf6c4a3a0b81 100644
+index ed97408b9965ac1b36b9b5c1912e2553dcc069bc..c31ffdaf98ea236ef9e7d77d663e929f74e7eedd 100644
 --- a/core/src/main/java/org/geysermc/geyser/util/SettingsUtils.java
 +++ b/core/src/main/java/org/geysermc/geyser/util/SettingsUtils.java
-@@ -25,6 +25,8 @@
- 
- package org.geysermc.geyser.util;
- 
-+import com.github.steveice10.mc.protocol.data.game.ClientCommand;
-+import com.github.steveice10.mc.protocol.packet.ingame.serverbound.ServerboundClientCommandPacket;
- import org.geysermc.cumulus.component.DropdownComponent;
- import org.geysermc.cumulus.form.CustomForm;
- import org.geysermc.geyser.GeyserImpl;
-@@ -34,6 +36,8 @@ import org.geysermc.geyser.session.GeyserSession;
+@@ -33,6 +33,10 @@ import org.geysermc.geyser.level.WorldManager;
+ import org.geysermc.geyser.session.GeyserSession;
  import org.geysermc.geyser.text.GeyserLocale;
  import org.geysermc.geyser.text.MinecraftLocale;
- 
-+import java.util.concurrent.TimeUnit;
++import org.geysermc.mcprotocollib.protocol.data.game.ClientCommand;
++import org.geysermc.mcprotocollib.protocol.packet.ingame.serverbound.ServerboundClientCommandPacket;
 +
++import java.util.concurrent.TimeUnit;
+ 
  public class SettingsUtils {
      /**
-      * Build a settings form for the given session and store it for later
 @@ -53,13 +57,18 @@ public class SettingsUtils {
          boolean showCoordinates = session.getPreferencesCache().isAllowShowCoordinates();
          boolean cooldownShown = CooldownUtils.getDefaultShowCooldown() != CooldownUtils.CooldownType.DISABLED;
