@@ -6,7 +6,7 @@ Subject: [PATCH] Emulate client side vehicle movement
 (Upstream PR: https://github.com/GeyserMC/Geyser/pull/4648)
 
 diff --git a/core/src/main/java/org/geysermc/geyser/entity/EntityDefinitions.java b/core/src/main/java/org/geysermc/geyser/entity/EntityDefinitions.java
-index 21cc526dd7a96a221883790481bb4adb501e59b4..474ccdcfb1c1a20339e1d7306974550e5f30fa8d 100644
+index 21cc526dd..474ccdcfb 100644
 --- a/core/src/main/java/org/geysermc/geyser/entity/EntityDefinitions.java
 +++ b/core/src/main/java/org/geysermc/geyser/entity/EntityDefinitions.java
 @@ -860,7 +860,7 @@ public final class EntityDefinitions {
@@ -37,7 +37,7 @@ index 21cc526dd7a96a221883790481bb4adb501e59b4..474ccdcfb1c1a20339e1d7306974550e
              HORSE = EntityDefinition.inherited(HorseEntity::new, abstractHorseEntityBase)
                      .type(EntityType.HORSE)
 diff --git a/core/src/main/java/org/geysermc/geyser/entity/type/Entity.java b/core/src/main/java/org/geysermc/geyser/entity/type/Entity.java
-index 6267ee7914cca88f2312e2260e3914950341b00b..43d881d9e252b64c6fdc74dd97d5038a9c513840 100644
+index 6267ee791..43d881d9e 100644
 --- a/core/src/main/java/org/geysermc/geyser/entity/type/Entity.java
 +++ b/core/src/main/java/org/geysermc/geyser/entity/type/Entity.java
 @@ -40,6 +40,7 @@ import org.geysermc.geyser.api.entity.type.GeyserEntity;
@@ -85,7 +85,7 @@ index 6267ee7914cca88f2312e2260e3914950341b00b..43d881d9e252b64c6fdc74dd97d5038a
      }
  
 diff --git a/core/src/main/java/org/geysermc/geyser/entity/type/LivingEntity.java b/core/src/main/java/org/geysermc/geyser/entity/type/LivingEntity.java
-index 499084555c4d7c566cde3b143e7d95cc1c48face..064a6b4e58cd8c24f19612034e5f993d140d58f8 100644
+index 499084555..064a6b4e5 100644
 --- a/core/src/main/java/org/geysermc/geyser/entity/type/LivingEntity.java
 +++ b/core/src/main/java/org/geysermc/geyser/entity/type/LivingEntity.java
 @@ -41,6 +41,7 @@ import org.cloudburstmc.protocol.bedrock.packet.MobEquipmentPacket;
@@ -124,7 +124,7 @@ index 499084555c4d7c566cde3b143e7d95cc1c48face..064a6b4e58cd8c24f19612034e5f993d
                  case GENERIC_KNOCKBACK_RESISTANCE -> newAttributes.add(calculateAttribute(javaAttribute, GeyserAttributeType.KNOCKBACK_RESISTANCE));
                  case GENERIC_JUMP_STRENGTH -> newAttributes.add(calculateAttribute(javaAttribute, GeyserAttributeType.HORSE_JUMP_STRENGTH));
 diff --git a/core/src/main/java/org/geysermc/geyser/entity/type/living/animal/PigEntity.java b/core/src/main/java/org/geysermc/geyser/entity/type/living/animal/PigEntity.java
-index 446e3e1095c5ad4acdfcf785496b08edee10ad44..d6f0ff95e924f2de1063cd3cd1bbfa775dfb9131 100644
+index 446e3e109..d6f0ff95e 100644
 --- a/core/src/main/java/org/geysermc/geyser/entity/type/living/animal/PigEntity.java
 +++ b/core/src/main/java/org/geysermc/geyser/entity/type/living/animal/PigEntity.java
 @@ -27,20 +27,27 @@ package org.geysermc.geyser.entity.type.living.animal;
@@ -189,7 +189,7 @@ index 446e3e1095c5ad4acdfcf785496b08edee10ad44..d6f0ff95e924f2de1063cd3cd1bbfa77
 +    }
  }
 diff --git a/core/src/main/java/org/geysermc/geyser/entity/type/living/animal/StriderEntity.java b/core/src/main/java/org/geysermc/geyser/entity/type/living/animal/StriderEntity.java
-index 0291f75d9b86a5eca46dbcc939f863e1a0f1e6b7..bee133c53fd06d0b9e7fb8e436b2c44caa33dcf9 100644
+index 0291f75d9..bee133c53 100644
 --- a/core/src/main/java/org/geysermc/geyser/entity/type/living/animal/StriderEntity.java
 +++ b/core/src/main/java/org/geysermc/geyser/entity/type/living/animal/StriderEntity.java
 @@ -27,23 +27,30 @@ package org.geysermc.geyser.entity.type.living.animal;
@@ -262,7 +262,7 @@ index 0291f75d9b86a5eca46dbcc939f863e1a0f1e6b7..bee133c53fd06d0b9e7fb8e436b2c44c
 +    }
  }
 diff --git a/core/src/main/java/org/geysermc/geyser/entity/type/living/animal/horse/CamelEntity.java b/core/src/main/java/org/geysermc/geyser/entity/type/living/animal/horse/CamelEntity.java
-index ee3b2be7020b232ef24d337b12d16c1847c8a67d..3c0bf1a70e059643fa12e8eee233468f35f12e52 100644
+index ee3b2be70..3c0bf1a70 100644
 --- a/core/src/main/java/org/geysermc/geyser/entity/type/living/animal/horse/CamelEntity.java
 +++ b/core/src/main/java/org/geysermc/geyser/entity/type/living/animal/horse/CamelEntity.java
 @@ -25,26 +25,36 @@
@@ -364,7 +364,7 @@ index ee3b2be7020b232ef24d337b12d16c1847c8a67d..3c0bf1a70e059643fa12e8eee233468f
      }
  }
 diff --git a/core/src/main/java/org/geysermc/geyser/entity/type/player/SessionPlayerEntity.java b/core/src/main/java/org/geysermc/geyser/entity/type/player/SessionPlayerEntity.java
-index 44b28ceaa910f246ba3a399a7f2c97bd6af385a2..4f9316f3b97e4a9136ae3adaff406f6c83a04d50 100644
+index ad6729c42..d220441e5 100644
 --- a/core/src/main/java/org/geysermc/geyser/entity/type/player/SessionPlayerEntity.java
 +++ b/core/src/main/java/org/geysermc/geyser/entity/type/player/SessionPlayerEntity.java
 @@ -28,6 +28,7 @@ package org.geysermc.geyser.entity.type.player;
@@ -375,7 +375,7 @@ index 44b28ceaa910f246ba3a399a7f2c97bd6af385a2..4f9316f3b97e4a9136ae3adaff406f6c
  import org.cloudburstmc.math.vector.Vector3f;
  import org.cloudburstmc.protocol.bedrock.data.AttributeData;
  import org.cloudburstmc.protocol.bedrock.data.entity.EntityDataTypes;
-@@ -37,6 +38,7 @@ import org.geysermc.geyser.item.Items;
+@@ -39,6 +40,7 @@ import org.geysermc.geyser.network.GameProtocol;
  import org.geysermc.geyser.session.GeyserSession;
  import org.geysermc.geyser.util.AttributeUtils;
  import org.geysermc.geyser.util.DimensionUtils;
@@ -383,7 +383,7 @@ index 44b28ceaa910f246ba3a399a7f2c97bd6af385a2..4f9316f3b97e4a9136ae3adaff406f6c
  import org.geysermc.mcprotocollib.protocol.data.game.entity.attribute.Attribute;
  import org.geysermc.mcprotocollib.protocol.data.game.entity.attribute.AttributeType;
  import org.geysermc.mcprotocollib.protocol.data.game.entity.metadata.GlobalPos;
-@@ -64,6 +66,16 @@ public class SessionPlayerEntity extends PlayerEntity {
+@@ -66,6 +68,16 @@ public class SessionPlayerEntity extends PlayerEntity {
       */
      @Getter
      private boolean isRidingInFront;
@@ -398,9 +398,9 @@ index 44b28ceaa910f246ba3a399a7f2c97bd6af385a2..4f9316f3b97e4a9136ae3adaff406f6c
 +    @Getter
 +    private int vehicleJumpStrength;
  
-     public SessionPlayerEntity(GeyserSession session) {
-         super(session, -1, 1, null, Vector3f.ZERO, Vector3f.ZERO, 0, 0, 0, null, null);
-@@ -266,4 +278,15 @@ public class SessionPlayerEntity extends PlayerEntity {
+     private int lastAirSupply = getMaxAir();
+ 
+@@ -276,4 +288,15 @@ public class SessionPlayerEntity extends PlayerEntity {
      public void resetAir() {
          this.setAirSupply(getMaxAir());
      }
@@ -418,7 +418,7 @@ index 44b28ceaa910f246ba3a399a7f2c97bd6af385a2..4f9316f3b97e4a9136ae3adaff406f6c
  }
 diff --git a/core/src/main/java/org/geysermc/geyser/entity/vehicle/BoostableVehicleComponent.java b/core/src/main/java/org/geysermc/geyser/entity/vehicle/BoostableVehicleComponent.java
 new file mode 100644
-index 0000000000000000000000000000000000000000..febe78ab4488bd78c0660c4259be47b24fef0dcf
+index 000000000..febe78ab4
 --- /dev/null
 +++ b/core/src/main/java/org/geysermc/geyser/entity/vehicle/BoostableVehicleComponent.java
 @@ -0,0 +1,65 @@
@@ -489,7 +489,7 @@ index 0000000000000000000000000000000000000000..febe78ab4488bd78c0660c4259be47b2
 +}
 diff --git a/core/src/main/java/org/geysermc/geyser/entity/vehicle/CamelVehicleComponent.java b/core/src/main/java/org/geysermc/geyser/entity/vehicle/CamelVehicleComponent.java
 new file mode 100644
-index 0000000000000000000000000000000000000000..55dc7b0be017f77b9861637c8c92d77ea92fbab9
+index 000000000..55dc7b0be
 --- /dev/null
 +++ b/core/src/main/java/org/geysermc/geyser/entity/vehicle/CamelVehicleComponent.java
 @@ -0,0 +1,151 @@
@@ -646,7 +646,7 @@ index 0000000000000000000000000000000000000000..55dc7b0be017f77b9861637c8c92d77e
 +}
 diff --git a/core/src/main/java/org/geysermc/geyser/entity/vehicle/ClientVehicle.java b/core/src/main/java/org/geysermc/geyser/entity/vehicle/ClientVehicle.java
 new file mode 100644
-index 0000000000000000000000000000000000000000..e6aaf1daac019426972c4f049080b54008935c08
+index 000000000..e6aaf1daa
 --- /dev/null
 +++ b/core/src/main/java/org/geysermc/geyser/entity/vehicle/ClientVehicle.java
 @@ -0,0 +1,46 @@
@@ -698,7 +698,7 @@ index 0000000000000000000000000000000000000000..e6aaf1daac019426972c4f049080b540
 +}
 diff --git a/core/src/main/java/org/geysermc/geyser/entity/vehicle/VehicleComponent.java b/core/src/main/java/org/geysermc/geyser/entity/vehicle/VehicleComponent.java
 new file mode 100644
-index 0000000000000000000000000000000000000000..b49301faa9f15cf1f645041b20a32eebdbcbbad5
+index 000000000..b49301faa
 --- /dev/null
 +++ b/core/src/main/java/org/geysermc/geyser/entity/vehicle/VehicleComponent.java
 @@ -0,0 +1,863 @@
@@ -1566,7 +1566,7 @@ index 0000000000000000000000000000000000000000..b49301faa9f15cf1f645041b20a32eeb
 +    }
 +}
 diff --git a/core/src/main/java/org/geysermc/geyser/inventory/PlayerInventory.java b/core/src/main/java/org/geysermc/geyser/inventory/PlayerInventory.java
-index 9bef4b08e5bc68287e938089283702f9d14a92d2..4f2408c777ca19fe2f78cfaf225981a56e5adc9b 100644
+index 9bef4b08e..4f2408c77 100644
 --- a/core/src/main/java/org/geysermc/geyser/inventory/PlayerInventory.java
 +++ b/core/src/main/java/org/geysermc/geyser/inventory/PlayerInventory.java
 @@ -29,6 +29,7 @@ import lombok.Getter;
@@ -1595,7 +1595,7 @@ index 9bef4b08e5bc68287e938089283702f9d14a92d2..4f2408c777ca19fe2f78cfaf225981a5
          return hand == Hand.OFF_HAND ? getOffhand() : getItemInHand();
      }
 diff --git a/core/src/main/java/org/geysermc/geyser/level/JavaDimension.java b/core/src/main/java/org/geysermc/geyser/level/JavaDimension.java
-index 6112dc6cfdeda6b68b5130e4a987287cbb0c2480..33e479002b75e3e04a4898f9a5d00f16a5f84c26 100644
+index 6112dc6cf..33e479002 100644
 --- a/core/src/main/java/org/geysermc/geyser/level/JavaDimension.java
 +++ b/core/src/main/java/org/geysermc/geyser/level/JavaDimension.java
 @@ -32,8 +32,10 @@ import org.geysermc.mcprotocollib.protocol.data.game.RegistryEntry;
@@ -1624,7 +1624,7 @@ index 6112dc6cfdeda6b68b5130e4a987287cbb0c2480..33e479002b75e3e04a4898f9a5d00f16
      }
  }
 diff --git a/core/src/main/java/org/geysermc/geyser/level/block/BlockStateValues.java b/core/src/main/java/org/geysermc/geyser/level/block/BlockStateValues.java
-index 01e95fc7aabe8459c8a714639688ba21ca41f53c..36e437026a1e145617a1c4b6164746694b004f0f 100644
+index 01e95fc7a..36e437026 100644
 --- a/core/src/main/java/org/geysermc/geyser/level/block/BlockStateValues.java
 +++ b/core/src/main/java/org/geysermc/geyser/level/block/BlockStateValues.java
 @@ -36,7 +36,7 @@ import org.geysermc.geyser.registry.BlockRegistries;
@@ -1713,7 +1713,7 @@ index 01e95fc7aabe8459c8a714639688ba21ca41f53c..36e437026a1e145617a1c4b616474669
       * This is used in ItemEntity to calculate the friction on an item as it slides across the ground
 diff --git a/core/src/main/java/org/geysermc/geyser/level/block/Fluid.java b/core/src/main/java/org/geysermc/geyser/level/block/Fluid.java
 new file mode 100644
-index 0000000000000000000000000000000000000000..a9693bbf466200c94729bc0a244cf22b1c1bb8c0
+index 000000000..a9693bbf4
 --- /dev/null
 +++ b/core/src/main/java/org/geysermc/geyser/level/block/Fluid.java
 @@ -0,0 +1,32 @@
@@ -1750,7 +1750,7 @@ index 0000000000000000000000000000000000000000..a9693bbf466200c94729bc0a244cf22b
 +    EMPTY
 +}
 diff --git a/core/src/main/java/org/geysermc/geyser/level/physics/BoundingBox.java b/core/src/main/java/org/geysermc/geyser/level/physics/BoundingBox.java
-index b1a93d8eeb9d3aa2107d8eb776ffeaf014c80fcd..c4245964b9d5073bdacf3482319e05ee9c33da9f 100644
+index b1a93d8ee..c4245964b 100644
 --- a/core/src/main/java/org/geysermc/geyser/level/physics/BoundingBox.java
 +++ b/core/src/main/java/org/geysermc/geyser/level/physics/BoundingBox.java
 @@ -33,6 +33,8 @@ import org.cloudburstmc.math.vector.Vector3d;
@@ -1801,7 +1801,7 @@ index b1a93d8eeb9d3aa2107d8eb776ffeaf014c80fcd..c4245964b9d5073bdacf3482319e05ee
      }
  
 diff --git a/core/src/main/java/org/geysermc/geyser/level/physics/CollisionManager.java b/core/src/main/java/org/geysermc/geyser/level/physics/CollisionManager.java
-index 2be4e7a385a5afc49bd2502b85df45a3d94f4bdb..a4fdb2e7c311391be759b5148a83faba88054b4d 100644
+index 2be4e7a38..a4fdb2e7c 100644
 --- a/core/src/main/java/org/geysermc/geyser/level/physics/CollisionManager.java
 +++ b/core/src/main/java/org/geysermc/geyser/level/physics/CollisionManager.java
 @@ -45,7 +45,9 @@ import org.geysermc.geyser.level.block.type.BlockState;
@@ -1965,7 +1965,7 @@ index 2be4e7a385a5afc49bd2502b85df45a3d94f4bdb..a4fdb2e7c311391be759b5148a83faba
          double waterHeight = BlockStateValues.getWaterHeight(blockID);
  
 diff --git a/core/src/main/java/org/geysermc/geyser/level/physics/Direction.java b/core/src/main/java/org/geysermc/geyser/level/physics/Direction.java
-index f14a469990737c38149891fc6a89c4d0633cfcfa..4821734f3fbcab37d3fb5715dc41f51cfc00b5b5 100644
+index f14a46999..4821734f3 100644
 --- a/core/src/main/java/org/geysermc/geyser/level/physics/Direction.java
 +++ b/core/src/main/java/org/geysermc/geyser/level/physics/Direction.java
 @@ -38,6 +38,7 @@ public enum Direction {
@@ -1977,7 +1977,7 @@ index f14a469990737c38149891fc6a89c4d0633cfcfa..4821734f3fbcab37d3fb5715dc41f51c
      private final int reversedId;
      @Getter
 diff --git a/core/src/main/java/org/geysermc/geyser/session/GeyserSession.java b/core/src/main/java/org/geysermc/geyser/session/GeyserSession.java
-index 9d2a3ef067c18915113f5e724c1000375fa98717..271a6eca954e2c0135f3f47bf53bfb741f4b568b 100644
+index fc000b95f..c2d412939 100644
 --- a/core/src/main/java/org/geysermc/geyser/session/GeyserSession.java
 +++ b/core/src/main/java/org/geysermc/geyser/session/GeyserSession.java
 @@ -88,6 +88,7 @@ import org.geysermc.geyser.entity.type.Entity;
@@ -1988,7 +1988,7 @@ index 9d2a3ef067c18915113f5e724c1000375fa98717..271a6eca954e2c0135f3f47bf53bfb74
  import org.geysermc.geyser.erosion.AbstractGeyserboundPacketHandler;
  import org.geysermc.geyser.erosion.GeyserboundHandshakePacketHandler;
  import org.geysermc.geyser.impl.camera.CameraDefinitions;
-@@ -533,6 +534,19 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
+@@ -524,6 +525,19 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
       */
      private ScheduledFuture<?> tickThread = null;
  
@@ -2008,7 +2008,7 @@ index 9d2a3ef067c18915113f5e724c1000375fa98717..271a6eca954e2c0135f3f47bf53bfb74
      /**
       * Used to return the player to their original rotation after using an item in BedrockInventoryTransactionTranslator
       */
-@@ -1209,6 +1223,10 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
+@@ -1193,6 +1207,10 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
                  isInWorldBorderWarningArea = false;
              }
  
@@ -2019,7 +2019,7 @@ index 9d2a3ef067c18915113f5e724c1000375fa98717..271a6eca954e2c0135f3f47bf53bfb74
  
              for (Tickable entity : entityCache.getTickableEntities()) {
                  entity.tick();
-@@ -1244,6 +1262,9 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
+@@ -1228,6 +1246,9 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
          } catch (Throwable throwable) {
              throwable.printStackTrace();
          }
@@ -2030,7 +2030,7 @@ index 9d2a3ef067c18915113f5e724c1000375fa98717..271a6eca954e2c0135f3f47bf53bfb74
  
      public void setAuthenticationData(AuthData authData) {
 diff --git a/core/src/main/java/org/geysermc/geyser/session/cache/tags/BlockTag.java b/core/src/main/java/org/geysermc/geyser/session/cache/tags/BlockTag.java
-index 7017ad55c843c5feb131940dec51b00c62474258..483f8e5efa82b572568a823ebc3122829f7d292c 100644
+index 7017ad55c..483f8e5ef 100644
 --- a/core/src/main/java/org/geysermc/geyser/session/cache/tags/BlockTag.java
 +++ b/core/src/main/java/org/geysermc/geyser/session/cache/tags/BlockTag.java
 @@ -36,7 +36,8 @@ public enum BlockTag {
@@ -2044,7 +2044,7 @@ index 7017ad55c843c5feb131940dec51b00c62474258..483f8e5efa82b572568a823ebc312282
      BlockTag(String identifier) {
          register(identifier, this);
 diff --git a/core/src/main/java/org/geysermc/geyser/translator/collision/BlockCollision.java b/core/src/main/java/org/geysermc/geyser/translator/collision/BlockCollision.java
-index a2615deb1236f61c2a92bf046c6dcf7a10b7dada..d04b03e665c638ce3b59c5b8700923c12936ab7c 100644
+index 2481028a4..f47ac2abe 100644
 --- a/core/src/main/java/org/geysermc/geyser/translator/collision/BlockCollision.java
 +++ b/core/src/main/java/org/geysermc/geyser/translator/collision/BlockCollision.java
 @@ -166,4 +166,15 @@ public class BlockCollision {
@@ -2065,7 +2065,7 @@ index a2615deb1236f61c2a92bf046c6dcf7a10b7dada..d04b03e665c638ce3b59c5b8700923c1
  }
 \ No newline at end of file
 diff --git a/core/src/main/java/org/geysermc/geyser/translator/protocol/bedrock/BedrockPlayerInputTranslator.java b/core/src/main/java/org/geysermc/geyser/translator/protocol/bedrock/BedrockPlayerInputTranslator.java
-index beb724ffbea91073abd2cd4ac7e1d4831f8b3f52..1498c21841c22da48a73904f8b69101f863461e8 100644
+index beb724ffb..1498c2184 100644
 --- a/core/src/main/java/org/geysermc/geyser/translator/protocol/bedrock/BedrockPlayerInputTranslator.java
 +++ b/core/src/main/java/org/geysermc/geyser/translator/protocol/bedrock/BedrockPlayerInputTranslator.java
 @@ -52,6 +52,8 @@ public class BedrockPlayerInputTranslator extends PacketTranslator<PlayerInputPa
@@ -2078,7 +2078,7 @@ index beb724ffbea91073abd2cd4ac7e1d4831f8b3f52..1498c21841c22da48a73904f8b69101f
          // This allows horses to take damage while standing on magma
          Entity vehicle = session.getPlayerEntity().getVehicle();
 diff --git a/core/src/main/java/org/geysermc/geyser/translator/protocol/bedrock/entity/player/BedrockRiderJumpTranslator.java b/core/src/main/java/org/geysermc/geyser/translator/protocol/bedrock/entity/player/BedrockRiderJumpTranslator.java
-index 76b95103e0588d6026aeb6933f9051265a8726a4..17668e0003498fdcccf44ca9f443cc4a9fa773c5 100644
+index 76b95103e..17668e000 100644
 --- a/core/src/main/java/org/geysermc/geyser/translator/protocol/bedrock/entity/player/BedrockRiderJumpTranslator.java
 +++ b/core/src/main/java/org/geysermc/geyser/translator/protocol/bedrock/entity/player/BedrockRiderJumpTranslator.java
 @@ -38,6 +38,8 @@ import org.geysermc.geyser.translator.protocol.Translator;
@@ -2091,7 +2091,7 @@ index 76b95103e0588d6026aeb6933f9051265a8726a4..17668e0003498fdcccf44ca9f443cc4a
          if (vehicle instanceof AbstractHorseEntity) {
              ServerboundPlayerCommandPacket playerCommandPacket = new ServerboundPlayerCommandPacket(vehicle.getEntityId(), PlayerState.START_HORSE_JUMP, packet.getJumpStrength());
 diff --git a/core/src/main/java/org/geysermc/geyser/translator/protocol/java/JavaRespawnTranslator.java b/core/src/main/java/org/geysermc/geyser/translator/protocol/java/JavaRespawnTranslator.java
-index fe0868253afca298458f8e5f2536b146a994096b..966d147637a6c0fc1c0eb5c4275bcadb2a366fa5 100644
+index fe0868253..966d14763 100644
 --- a/core/src/main/java/org/geysermc/geyser/translator/protocol/java/JavaRespawnTranslator.java
 +++ b/core/src/main/java/org/geysermc/geyser/translator/protocol/java/JavaRespawnTranslator.java
 @@ -100,6 +100,7 @@ public class JavaRespawnTranslator extends PacketTranslator<ClientboundRespawnPa
@@ -2103,7 +2103,7 @@ index fe0868253afca298458f8e5f2536b146a994096b..966d147637a6c0fc1c0eb5c4275bcadb
  
              ChunkUtils.loadDimension(session);
 diff --git a/core/src/main/java/org/geysermc/geyser/translator/protocol/java/entity/JavaMoveVehicleTranslator.java b/core/src/main/java/org/geysermc/geyser/translator/protocol/java/entity/JavaMoveVehicleTranslator.java
-index 111b72c4fce0c5d75cad445b24d00f17854f3584..1f18d4d2f2e93840250a150fc772952460085c8e 100644
+index 111b72c4f..1f18d4d2f 100644
 --- a/core/src/main/java/org/geysermc/geyser/translator/protocol/java/entity/JavaMoveVehicleTranslator.java
 +++ b/core/src/main/java/org/geysermc/geyser/translator/protocol/java/entity/JavaMoveVehicleTranslator.java
 @@ -28,6 +28,7 @@ package org.geysermc.geyser.translator.protocol.java.entity;
@@ -2126,7 +2126,7 @@ index 111b72c4fce0c5d75cad445b24d00f17854f3584..1f18d4d2f2e93840250a150fc7729524
      }
  }
 diff --git a/core/src/main/java/org/geysermc/geyser/translator/protocol/java/entity/JavaRemoveMobEffectTranslator.java b/core/src/main/java/org/geysermc/geyser/translator/protocol/java/entity/JavaRemoveMobEffectTranslator.java
-index dafa5aec1d091122d0c485f39b125ee0298be67e..0230d8c235d68972d361d766fde855377b9b5b9b 100644
+index dafa5aec1..0230d8c23 100644
 --- a/core/src/main/java/org/geysermc/geyser/translator/protocol/java/entity/JavaRemoveMobEffectTranslator.java
 +++ b/core/src/main/java/org/geysermc/geyser/translator/protocol/java/entity/JavaRemoveMobEffectTranslator.java
 @@ -28,6 +28,7 @@ package org.geysermc.geyser.translator.protocol.java.entity;
@@ -2156,7 +2156,7 @@ index dafa5aec1d091122d0c485f39b125ee0298be67e..0230d8c235d68972d361d766fde85537
          MobEffectPacket mobEffectPacket = new MobEffectPacket();
          mobEffectPacket.setEvent(MobEffectPacket.Event.REMOVE);
 diff --git a/core/src/main/java/org/geysermc/geyser/translator/protocol/java/entity/JavaSetPassengersTranslator.java b/core/src/main/java/org/geysermc/geyser/translator/protocol/java/entity/JavaSetPassengersTranslator.java
-index 9895a248c29f69870664cbc8905da42343269344..865ca0464131055d7dddf7f42d462eac24af817f 100644
+index 9895a248c..865ca0464 100644
 --- a/core/src/main/java/org/geysermc/geyser/translator/protocol/java/entity/JavaSetPassengersTranslator.java
 +++ b/core/src/main/java/org/geysermc/geyser/translator/protocol/java/entity/JavaSetPassengersTranslator.java
 @@ -30,6 +30,7 @@ import org.cloudburstmc.protocol.bedrock.data.entity.EntityLinkData;
@@ -2190,7 +2190,7 @@ index 9895a248c29f69870664cbc8905da42343269344..865ca0464131055d7dddf7f42d462eac
              }
          }
 diff --git a/core/src/main/java/org/geysermc/geyser/translator/protocol/java/entity/JavaTeleportEntityTranslator.java b/core/src/main/java/org/geysermc/geyser/translator/protocol/java/entity/JavaTeleportEntityTranslator.java
-index 8b3a06d7cac879df9455f71e6d31cc70c717d5f3..47c61eb8eaa4a49f689c45dd9fb9c32bc87760cd 100644
+index 8b3a06d7c..47c61eb8e 100644
 --- a/core/src/main/java/org/geysermc/geyser/translator/protocol/java/entity/JavaTeleportEntityTranslator.java
 +++ b/core/src/main/java/org/geysermc/geyser/translator/protocol/java/entity/JavaTeleportEntityTranslator.java
 @@ -28,6 +28,7 @@ package org.geysermc.geyser.translator.protocol.java.entity;
@@ -2213,7 +2213,7 @@ index 8b3a06d7cac879df9455f71e6d31cc70c717d5f3..47c61eb8eaa4a49f689c45dd9fb9c32b
      }
  }
 diff --git a/core/src/main/java/org/geysermc/geyser/translator/protocol/java/entity/JavaUpdateMobEffectTranslator.java b/core/src/main/java/org/geysermc/geyser/translator/protocol/java/entity/JavaUpdateMobEffectTranslator.java
-index 7638df8bebe5629be9185749c5a09d283b85ad97..c44bcb931a369c86793727b9f4e1bff0c42fb0b2 100644
+index 7638df8be..c44bcb931 100644
 --- a/core/src/main/java/org/geysermc/geyser/translator/protocol/java/entity/JavaUpdateMobEffectTranslator.java
 +++ b/core/src/main/java/org/geysermc/geyser/translator/protocol/java/entity/JavaUpdateMobEffectTranslator.java
 @@ -28,6 +28,7 @@ package org.geysermc.geyser.translator.protocol.java.entity;
@@ -2245,7 +2245,7 @@ index 7638df8bebe5629be9185749c5a09d283b85ad97..c44bcb931a369c86793727b9f4e1bff0
          if (duration < 0) {
              // java edition uses -1 for infinite, but bedrock doesn't have infinite
 diff --git a/core/src/main/java/org/geysermc/geyser/translator/protocol/java/level/JavaSetTimeTranslator.java b/core/src/main/java/org/geysermc/geyser/translator/protocol/java/level/JavaSetTimeTranslator.java
-index 1e398ad9bbf5a254999ff1064ece13a1a60c6985..43ef0870a05e2ed8e4e03ed743c66db17f8e8a49 100644
+index 1e398ad9b..43ef0870a 100644
 --- a/core/src/main/java/org/geysermc/geyser/translator/protocol/java/level/JavaSetTimeTranslator.java
 +++ b/core/src/main/java/org/geysermc/geyser/translator/protocol/java/level/JavaSetTimeTranslator.java
 @@ -36,6 +36,8 @@ public class JavaSetTimeTranslator extends PacketTranslator<ClientboundSetTimePa
@@ -2258,7 +2258,7 @@ index 1e398ad9bbf5a254999ff1064ece13a1a60c6985..43ef0870a05e2ed8e4e03ed743c66db1
          // Java just sends a negative long if there is no daylight cycle
          long time = packet.getTime();
 diff --git a/gradle/libs.versions.toml b/gradle/libs.versions.toml
-index 1995a6ada822cd059623442b4b26d0a473946eaa..718b6a046d0ad6d423e7eb8eae7b9cdbd3b52017 100644
+index 9ff1f3afd..1461cd003 100644
 --- a/gradle/libs.versions.toml
 +++ b/gradle/libs.versions.toml
 @@ -1,7 +1,7 @@
