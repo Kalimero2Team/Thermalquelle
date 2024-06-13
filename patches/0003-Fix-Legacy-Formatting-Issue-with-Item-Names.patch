@@ -5,7 +5,7 @@ Subject: [PATCH] Fix Legacy Formatting Issue with Item Names
 
 
 diff --git a/core/src/main/java/org/geysermc/geyser/translator/text/MessageTranslator.java b/core/src/main/java/org/geysermc/geyser/translator/text/MessageTranslator.java
-index 5a0121039d3ffabbad8597bd3105e1abc427e7ff..9adac2a8ddfa7fceeb4d8c1caf3b174061ab6885 100644
+index bf6fdd7633d307acd65d8794a0af8d0746516f66..b3ad05f2e1c831abac7d22a78e6df07d9ea9809a 100644
 --- a/core/src/main/java/org/geysermc/geyser/translator/text/MessageTranslator.java
 +++ b/core/src/main/java/org/geysermc/geyser/translator/text/MessageTranslator.java
 @@ -39,8 +39,10 @@ import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;

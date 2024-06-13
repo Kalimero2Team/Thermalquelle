@@ -5,7 +5,7 @@ Subject: [PATCH] Add Thermalquelle Branding
 
 
 diff --git a/core/src/main/java/org/geysermc/geyser/GeyserImpl.java b/core/src/main/java/org/geysermc/geyser/GeyserImpl.java
-index a60a14ea04d071802eae000b166e4c85c868ac1c..f1925c2b9a8646fd03ad0228b2646442645c1111 100644
+index cc5f7ea334eb4a643c58316cad21e70a7bc78797..b8f8ed387a444a565fddbc05c5f23b212cca92e2 100644
 --- a/core/src/main/java/org/geysermc/geyser/GeyserImpl.java
 +++ b/core/src/main/java/org/geysermc/geyser/GeyserImpl.java
 @@ -115,6 +115,7 @@ public class GeyserImpl implements GeyserApi {
