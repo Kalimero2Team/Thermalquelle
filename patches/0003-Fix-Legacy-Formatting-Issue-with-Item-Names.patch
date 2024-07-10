@@ -5,21 +5,21 @@ Subject: [PATCH] Fix Legacy Formatting Issue with Item Names
 
 
 diff --git a/core/src/main/java/org/geysermc/geyser/translator/text/MessageTranslator.java b/core/src/main/java/org/geysermc/geyser/translator/text/MessageTranslator.java
-index bf6fdd7633d307acd65d8794a0af8d0746516f66..b3ad05f2e1c831abac7d22a78e6df07d9ea9809a 100644
+index 152bf41600c0b190947351a132db4138f1cca8a3..f11537f49163dcd727c4a369799cb4d3365b1fac 100644
 --- a/core/src/main/java/org/geysermc/geyser/translator/text/MessageTranslator.java
 +++ b/core/src/main/java/org/geysermc/geyser/translator/text/MessageTranslator.java
-@@ -39,8 +39,10 @@ import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
- import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
+@@ -38,8 +38,10 @@ import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
+ import org.cloudburstmc.nbt.NbtMap;
  import org.cloudburstmc.protocol.bedrock.packet.TextPacket;
  import org.geysermc.geyser.GeyserImpl;
 +import org.geysermc.geyser.GeyserLogger;
  import org.geysermc.geyser.session.GeyserSession;
  import org.geysermc.geyser.text.*;
 +import org.jetbrains.annotations.NotNull;
- 
- import java.util.*;
- 
-@@ -229,19 +231,28 @@ public class MessageTranslator {
+ import org.geysermc.mcprotocollib.protocol.data.DefaultComponentSerializer;
+ import org.geysermc.mcprotocollib.protocol.data.game.Holder;
+ import org.geysermc.mcprotocollib.protocol.data.game.chat.ChatType;
+@@ -233,19 +235,28 @@ public class MessageTranslator {
              return message;
          }
  

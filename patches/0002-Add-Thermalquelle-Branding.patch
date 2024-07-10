@@ -5,7 +5,7 @@ Subject: [PATCH] Add Thermalquelle Branding
 
 
 diff --git a/core/src/main/java/org/geysermc/geyser/GeyserImpl.java b/core/src/main/java/org/geysermc/geyser/GeyserImpl.java
-index cc5f7ea334eb4a643c58316cad21e70a7bc78797..b8f8ed387a444a565fddbc05c5f23b212cca92e2 100644
+index 88cc746914c317323833f4faea78ba929e6a8ce5..8deef85b3624b4ffd98a5637f35a4d523d1c169e 100644
 --- a/core/src/main/java/org/geysermc/geyser/GeyserImpl.java
 +++ b/core/src/main/java/org/geysermc/geyser/GeyserImpl.java
 @@ -115,6 +115,7 @@ public class GeyserImpl implements GeyserApi {
@@ -13,23 +13,23 @@ index cc5f7ea334eb4a643c58316cad21e70a7bc78797..b8f8ed387a444a565fddbc05c5f23b21
  
      public static final String NAME = "Geyser";
 +    public static final String BRAND_NAME = "Thermalquelle"; // Thermalquelle - Add Brand Name
-     public static final String GIT_VERSION = "${gitVersion}";
-     public static final String VERSION = "${version}";
+     public static final String GIT_VERSION = BuildData.GIT_VERSION;
+     public static final String VERSION = BuildData.VERSION;
  
-@@ -205,7 +206,7 @@ public class GeyserImpl implements GeyserApi {
+@@ -206,7 +207,7 @@ public class GeyserImpl implements GeyserApi {
  
          logger.info("******************************************");
          logger.info("");
 -        logger.info(GeyserLocale.getLocaleStringLog("geyser.core.load", NAME, VERSION));
 +        logger.info(GeyserLocale.getLocaleStringLog("geyser.core.load", BRAND_NAME, VERSION)); // Thermalquelle - Change to BRAND_NAME
          logger.info("");
-         logger.info("******************************************");
- 
+         if (IS_DEV) {
+             // TODO cloud use language string
 diff --git a/core/src/main/java/org/geysermc/geyser/command/defaults/VersionCommand.java b/core/src/main/java/org/geysermc/geyser/command/defaults/VersionCommand.java
-index eb2e8ff47bdc9b555900cc3c48b488fa7d6aa943..afb35c74e5ba9cdbd26213eb60749a2dbb2ae15f 100644
+index c6852d57743636ef4e9861bbc17d159e373d6857..f67c65be66f81fa9114b30b027a2b3d685038e6f 100644
 --- a/core/src/main/java/org/geysermc/geyser/command/defaults/VersionCommand.java
 +++ b/core/src/main/java/org/geysermc/geyser/command/defaults/VersionCommand.java
-@@ -69,8 +69,10 @@ public class VersionCommand extends GeyserCommand {
+@@ -68,8 +68,10 @@ public class VersionCommand extends GeyserCommand {
          }
  
          sender.sendMessage(GeyserLocale.getPlayerLocaleString("geyser.commands.version.version", sender.locale(),
@@ -39,11 +39,11 @@ index eb2e8ff47bdc9b555900cc3c48b488fa7d6aa943..afb35c74e5ba9cdbd26213eb60749a2d
 +        // Thermalquelle start - remove update checking
 +        /*
          // Disable update checking in dev mode and for players in Geyser Standalone
-         if (GeyserImpl.getInstance().isProductionEnvironment() && !(!sender.isConsole() && geyser.getPlatformType() == PlatformType.STANDALONE)) {
-             sender.sendMessage(GeyserLocale.getPlayerLocaleString("geyser.commands.version.checking", sender.locale()));
-@@ -94,6 +96,8 @@ public class VersionCommand extends GeyserCommand {
-                 sender.sendMessage(ChatColor.RED + GeyserLocale.getPlayerLocaleString("geyser.commands.version.failed", sender.locale()));
-             }
+         if (!GeyserImpl.getInstance().isProductionEnvironment() || (!sender.isConsole() && geyser.getPlatformType() == PlatformType.STANDALONE)) {
+             return;
+@@ -102,6 +104,8 @@ public class VersionCommand extends GeyserCommand {
+             GeyserImpl.getInstance().getLogger().error(GeyserLocale.getLocaleStringLog("geyser.commands.version.failed"), e);
+             sender.sendMessage(ChatColor.RED + GeyserLocale.getPlayerLocaleString("geyser.commands.version.failed", sender.locale()));
          }
 +        */
 +        // Thermalquelle end

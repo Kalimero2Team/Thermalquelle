@@ -5,17 +5,21 @@ Subject: [PATCH] Publish to our Repo
 
 
 diff --git a/build-logic/src/main/kotlin/geyser.modded-conventions.gradle.kts b/build-logic/src/main/kotlin/geyser.modded-conventions.gradle.kts
-index b75e9c5beb9e518d553415b6c9369f0674a6c88d..7a7daeaad71164253d670a501f5a57e766b7bb39 100644
+index 7952bcf14c5c317c5d7648269dee10df9ce38e52..d33a0405759d76f49caf2766e822d78bc29e8020 100644
 --- a/build-logic/src/main/kotlin/geyser.modded-conventions.gradle.kts
 +++ b/build-logic/src/main/kotlin/geyser.modded-conventions.gradle.kts
-@@ -118,6 +118,7 @@ repositories {
+@@ -116,8 +116,9 @@ dependencies {
+ repositories {
      // mavenLocal()
-     maven("https://repo.opencollab.dev/maven-releases/")
-     maven("https://repo.opencollab.dev/maven-snapshots/")
+     maven("https://repo.opencollab.dev/main")
 +    maven("https://repo.kalimero2.com/snapshots/")
      maven("https://jitpack.io")
      maven("https://oss.sonatype.org/content/repositories/snapshots/")
      maven("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+     maven("https://maven.neoforged.net/releases")
+-}
+\ No newline at end of file
++}
 diff --git a/build-logic/src/main/kotlin/geyser.publish-conventions.gradle.kts b/build-logic/src/main/kotlin/geyser.publish-conventions.gradle.kts
 index eca5877216da6dc2bd3bdca95a9b8db00ce78522..4588ee52176d093530d4de716435eac07dd4631d 100644
 --- a/build-logic/src/main/kotlin/geyser.publish-conventions.gradle.kts
@@ -32,7 +36,7 @@ index eca5877216da6dc2bd3bdca95a9b8db00ce78522..4588ee52176d093530d4de716435eac0
  
  publishing {
 diff --git a/gradle.properties b/gradle.properties
-index ea473906a31770379ecf88a9a3ed45a2dbc70274..9255a0e56e96f0ae93aab5126a702ef9f37fbfb7 100644
+index a222b1d99133f7ea339eb5ebfadfc83307021f4a..60718adff3a76642ccaa44c8b9c5d1ffb113d61d 100644
 --- a/gradle.properties
 +++ b/gradle.properties
 @@ -5,7 +5,7 @@ org.gradle.parallel=true
@@ -43,5 +47,5 @@ index ea473906a31770379ecf88a9a3ed45a2dbc70274..9255a0e56e96f0ae93aab5126a702ef9
 -id=geyser
 +group=com.kalimero2.team
 +id=thermalquelle
- version=2.3.2-SNAPSHOT
+ version=2.4.0-SNAPSHOT
  description=Allows for players from Minecraft: Bedrock Edition to join Minecraft: Java Edition servers.
