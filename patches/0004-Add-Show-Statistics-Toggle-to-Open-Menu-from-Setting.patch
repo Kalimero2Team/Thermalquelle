@@ -5,13 +5,13 @@ Subject: [PATCH] Add Show Statistics Toggle to Open Menu from Settings
 
 
 diff --git a/core/src/main/java/org/geysermc/geyser/util/SettingsUtils.java b/core/src/main/java/org/geysermc/geyser/util/SettingsUtils.java
-index ed97408b9965ac1b36b9b5c1912e2553dcc069bc..c31ffdaf98ea236ef9e7d77d663e929f74e7eedd 100644
+index cb6ad6f0c2fdd483b6725d3b5ce62fa43ca65216..b093585e5490a3a2720f95527e2c511fc4be1633 100644
 --- a/core/src/main/java/org/geysermc/geyser/util/SettingsUtils.java
 +++ b/core/src/main/java/org/geysermc/geyser/util/SettingsUtils.java
-@@ -33,6 +33,10 @@ import org.geysermc.geyser.level.WorldManager;
- import org.geysermc.geyser.session.GeyserSession;
+@@ -36,6 +36,10 @@ import org.geysermc.geyser.session.GeyserSession;
  import org.geysermc.geyser.text.GeyserLocale;
  import org.geysermc.geyser.text.MinecraftLocale;
+ import org.geysermc.mcprotocollib.protocol.data.game.setting.Difficulty;
 +import org.geysermc.mcprotocollib.protocol.data.game.ClientCommand;
 +import org.geysermc.mcprotocollib.protocol.packet.ingame.serverbound.ServerboundClientCommandPacket;
 +
@@ -19,7 +19,7 @@ index ed97408b9965ac1b36b9b5c1912e2553dcc069bc..c31ffdaf98ea236ef9e7d77d663e929f
  
  public class SettingsUtils {
      /**
-@@ -53,13 +57,18 @@ public class SettingsUtils {
+@@ -56,13 +60,18 @@ public class SettingsUtils {
          boolean showCoordinates = session.getPreferencesCache().isAllowShowCoordinates();
          boolean cooldownShown = CooldownUtils.getDefaultShowCooldown() != CooldownUtils.CooldownType.DISABLED;
          boolean customSkulls = session.getGeyser().getConfig().isAllowCustomSkulls();
@@ -39,9 +39,9 @@ index ed97408b9965ac1b36b9b5c1912e2553dcc069bc..c31ffdaf98ea236ef9e7d77d663e929f
              // Client can only see its coordinates if reducedDebugInfo is disabled and coordinates are enabled in geyser config.
              if (showCoordinates) {
                  builder.toggle("%createWorldScreen.showCoordinates", session.getPreferencesCache().isPrefersShowCoordinates());
-@@ -97,6 +106,19 @@ public class SettingsUtils {
- 
+@@ -101,6 +110,19 @@ public class SettingsUtils {
          builder.validResultHandler((response) -> {
+             applyDifficultyFix(session);
              if (showClientSettings) {
 +
 +                if (showStatistics) {

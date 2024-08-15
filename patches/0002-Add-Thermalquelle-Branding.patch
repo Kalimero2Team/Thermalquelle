@@ -5,10 +5,10 @@ Subject: [PATCH] Add Thermalquelle Branding
 
 
 diff --git a/core/src/main/java/org/geysermc/geyser/GeyserImpl.java b/core/src/main/java/org/geysermc/geyser/GeyserImpl.java
-index 88cc746914c317323833f4faea78ba929e6a8ce5..8deef85b3624b4ffd98a5637f35a4d523d1c169e 100644
+index 8febf4d217961d374bc3c425bbd67da92a14d1b9..55915d1ab409eced07a5ac9b7c6a6b9c2fd74d40 100644
 --- a/core/src/main/java/org/geysermc/geyser/GeyserImpl.java
 +++ b/core/src/main/java/org/geysermc/geyser/GeyserImpl.java
-@@ -115,6 +115,7 @@ public class GeyserImpl implements GeyserApi {
+@@ -138,6 +138,7 @@ public class GeyserImpl implements GeyserApi, EventRegistrar {
              .enable(JsonParser.Feature.ALLOW_SINGLE_QUOTES);
  
      public static final String NAME = "Geyser";
@@ -16,7 +16,7 @@ index 88cc746914c317323833f4faea78ba929e6a8ce5..8deef85b3624b4ffd98a5637f35a4d52
      public static final String GIT_VERSION = BuildData.GIT_VERSION;
      public static final String VERSION = BuildData.VERSION;
  
-@@ -206,7 +207,7 @@ public class GeyserImpl implements GeyserApi {
+@@ -223,7 +224,7 @@ public class GeyserImpl implements GeyserApi, EventRegistrar {
  
          logger.info("******************************************");
          logger.info("");
@@ -24,29 +24,30 @@ index 88cc746914c317323833f4faea78ba929e6a8ce5..8deef85b3624b4ffd98a5637f35a4d52
 +        logger.info(GeyserLocale.getLocaleStringLog("geyser.core.load", BRAND_NAME, VERSION)); // Thermalquelle - Change to BRAND_NAME
          logger.info("");
          if (IS_DEV) {
-             // TODO cloud use language string
+             logger.info(GeyserLocale.getLocaleStringLog("geyser.core.dev_build", "https://discord.gg/geysermc"));
 diff --git a/core/src/main/java/org/geysermc/geyser/command/defaults/VersionCommand.java b/core/src/main/java/org/geysermc/geyser/command/defaults/VersionCommand.java
-index c6852d57743636ef4e9861bbc17d159e373d6857..f67c65be66f81fa9114b30b027a2b3d685038e6f 100644
+index 8d34c1bf047f299d1f1f8efb548e1001674ff163..8ff1e8bda975fe20ac26d2a61f00c8f53caa7830 100644
 --- a/core/src/main/java/org/geysermc/geyser/command/defaults/VersionCommand.java
 +++ b/core/src/main/java/org/geysermc/geyser/command/defaults/VersionCommand.java
-@@ -68,8 +68,10 @@ public class VersionCommand extends GeyserCommand {
+@@ -69,9 +69,11 @@ public class VersionCommand extends GeyserCommand {
+             javaVersions = supportedJavaVersions.get(0);
          }
  
-         sender.sendMessage(GeyserLocale.getPlayerLocaleString("geyser.commands.version.version", sender.locale(),
+-        source.sendMessage(GeyserLocale.getPlayerLocaleString("geyser.commands.version.version", source.locale(),
 -                GeyserImpl.NAME, GeyserImpl.VERSION, javaVersions, bedrockVersions));
++        sender.sendMessage(GeyserLocale.getPlayerLocaleString("geyser.commands.version.version", sender.locale(),
 +                GeyserImpl.BRAND_NAME, GeyserImpl.VERSION, javaVersions, bedrockVersions)); // Thermalquelle - Change to BRAND_NAME
  
 +        // Thermalquelle start - remove update checking
 +        /*
          // Disable update checking in dev mode and for players in Geyser Standalone
-         if (!GeyserImpl.getInstance().isProductionEnvironment() || (!sender.isConsole() && geyser.getPlatformType() == PlatformType.STANDALONE)) {
+         if (!GeyserImpl.getInstance().isProductionEnvironment() || (!source.isConsole() && geyser.getPlatformType() == PlatformType.STANDALONE)) {
              return;
-@@ -102,6 +104,8 @@ public class VersionCommand extends GeyserCommand {
+@@ -101,5 +103,7 @@ public class VersionCommand extends GeyserCommand {
              GeyserImpl.getInstance().getLogger().error(GeyserLocale.getLocaleStringLog("geyser.commands.version.failed"), e);
-             sender.sendMessage(ChatColor.RED + GeyserLocale.getPlayerLocaleString("geyser.commands.version.failed", sender.locale()));
+             source.sendMessage(ChatColor.RED + GeyserLocale.getPlayerLocaleString("geyser.commands.version.failed", source.locale()));
          }
 +        */
 +        // Thermalquelle end
      }
- 
-     @Override
+ }

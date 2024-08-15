@@ -4,22 +4,6 @@ Date: Mon, 2 Oct 2023 11:43:24 +0000
 Subject: [PATCH] Publish to our Repo
 
 
-diff --git a/build-logic/src/main/kotlin/geyser.modded-conventions.gradle.kts b/build-logic/src/main/kotlin/geyser.modded-conventions.gradle.kts
-index 7952bcf14c5c317c5d7648269dee10df9ce38e52..d33a0405759d76f49caf2766e822d78bc29e8020 100644
---- a/build-logic/src/main/kotlin/geyser.modded-conventions.gradle.kts
-+++ b/build-logic/src/main/kotlin/geyser.modded-conventions.gradle.kts
-@@ -116,8 +116,9 @@ dependencies {
- repositories {
-     // mavenLocal()
-     maven("https://repo.opencollab.dev/main")
-+    maven("https://repo.kalimero2.com/snapshots/")
-     maven("https://jitpack.io")
-     maven("https://oss.sonatype.org/content/repositories/snapshots/")
-     maven("https://s01.oss.sonatype.org/content/repositories/snapshots/")
-     maven("https://maven.neoforged.net/releases")
--}
-\ No newline at end of file
-+}
 diff --git a/build-logic/src/main/kotlin/geyser.publish-conventions.gradle.kts b/build-logic/src/main/kotlin/geyser.publish-conventions.gradle.kts
 index eca5877216da6dc2bd3bdca95a9b8db00ce78522..4588ee52176d093530d4de716435eac07dd4631d 100644
 --- a/build-logic/src/main/kotlin/geyser.publish-conventions.gradle.kts
@@ -36,7 +20,7 @@ index eca5877216da6dc2bd3bdca95a9b8db00ce78522..4588ee52176d093530d4de716435eac0
  
  publishing {
 diff --git a/gradle.properties b/gradle.properties
-index a222b1d99133f7ea339eb5ebfadfc83307021f4a..60718adff3a76642ccaa44c8b9c5d1ffb113d61d 100644
+index 814529d6c8dcca9a8a4b769bde53875566a64d9f..37ebd7768660ad38b5145bde76eb8e63475877fc 100644
 --- a/gradle.properties
 +++ b/gradle.properties
 @@ -5,7 +5,7 @@ org.gradle.parallel=true
@@ -47,5 +31,5 @@ index a222b1d99133f7ea339eb5ebfadfc83307021f4a..60718adff3a76642ccaa44c8b9c5d1ff
 -id=geyser
 +group=com.kalimero2.team
 +id=thermalquelle
- version=2.4.0-SNAPSHOT
+ version=2.4.2-SNAPSHOT
  description=Allows for players from Minecraft: Bedrock Edition to join Minecraft: Java Edition servers.
