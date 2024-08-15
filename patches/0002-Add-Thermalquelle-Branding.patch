@@ -26,17 +26,15 @@ index 8febf4d217961d374bc3c425bbd67da92a14d1b9..55915d1ab409eced07a5ac9b7c6a6b9c
          if (IS_DEV) {
              logger.info(GeyserLocale.getLocaleStringLog("geyser.core.dev_build", "https://discord.gg/geysermc"));
 diff --git a/core/src/main/java/org/geysermc/geyser/command/defaults/VersionCommand.java b/core/src/main/java/org/geysermc/geyser/command/defaults/VersionCommand.java
-index 8d34c1bf047f299d1f1f8efb548e1001674ff163..8ff1e8bda975fe20ac26d2a61f00c8f53caa7830 100644
+index 8d34c1bf047f299d1f1f8efb548e1001674ff163..cf4000ab687e4570f3c685701f94e067840b6c54 100644
 --- a/core/src/main/java/org/geysermc/geyser/command/defaults/VersionCommand.java
 +++ b/core/src/main/java/org/geysermc/geyser/command/defaults/VersionCommand.java
-@@ -69,9 +69,11 @@ public class VersionCommand extends GeyserCommand {
-             javaVersions = supportedJavaVersions.get(0);
+@@ -70,8 +70,10 @@ public class VersionCommand extends GeyserCommand {
          }
  
--        source.sendMessage(GeyserLocale.getPlayerLocaleString("geyser.commands.version.version", source.locale(),
+         source.sendMessage(GeyserLocale.getPlayerLocaleString("geyser.commands.version.version", source.locale(),
 -                GeyserImpl.NAME, GeyserImpl.VERSION, javaVersions, bedrockVersions));
-+        sender.sendMessage(GeyserLocale.getPlayerLocaleString("geyser.commands.version.version", sender.locale(),
-+                GeyserImpl.BRAND_NAME, GeyserImpl.VERSION, javaVersions, bedrockVersions)); // Thermalquelle - Change to BRAND_NAME
++            GeyserImpl.BRAND_NAME, GeyserImpl.VERSION, javaVersions, bedrockVersions)); // Thermalquelle - Change to BRAND_NAME
  
 +        // Thermalquelle start - remove update checking
 +        /*
