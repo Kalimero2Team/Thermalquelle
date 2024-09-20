@@ -5,21 +5,54 @@ Subject: [PATCH] Fix Legacy Formatting Issue with Item Names
 
 
 diff --git a/core/src/main/java/org/geysermc/geyser/translator/text/MessageTranslator.java b/core/src/main/java/org/geysermc/geyser/translator/text/MessageTranslator.java
-index 152bf41600c0b190947351a132db4138f1cca8a3..f11537f49163dcd727c4a369799cb4d3365b1fac 100644
+index 1932d3e47861b13c99e5f456c80945ee3d97e6a6..c18e98a942b2d011cc29898452d53fc6672fa7b0 100644
 --- a/core/src/main/java/org/geysermc/geyser/translator/text/MessageTranslator.java
 +++ b/core/src/main/java/org/geysermc/geyser/translator/text/MessageTranslator.java
-@@ -38,8 +38,10 @@ import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
- import org.cloudburstmc.nbt.NbtMap;
- import org.cloudburstmc.protocol.bedrock.packet.TextPacket;
- import org.geysermc.geyser.GeyserImpl;
-+import org.geysermc.geyser.GeyserLogger;
- import org.geysermc.geyser.session.GeyserSession;
- import org.geysermc.geyser.text.*;
+@@ -49,6 +49,7 @@ import org.geysermc.geyser.text.DummyLegacyHoverEventSerializer;
+ import org.geysermc.geyser.text.GeyserLocale;
+ import org.geysermc.geyser.text.GsonComponentSerializerWrapper;
+ import org.geysermc.geyser.text.MinecraftTranslationRegistry;
 +import org.jetbrains.annotations.NotNull;
  import org.geysermc.mcprotocollib.protocol.data.DefaultComponentSerializer;
  import org.geysermc.mcprotocollib.protocol.data.game.Holder;
  import org.geysermc.mcprotocollib.protocol.data.game.chat.ChatType;
-@@ -233,19 +235,28 @@ public class MessageTranslator {
+@@ -108,11 +109,11 @@ public class MessageTranslator {
+ 
+         // Temporary fix for https://github.com/KyoriPowered/adventure/issues/447 - TODO resolve properly
+         GsonComponentSerializer source = DefaultComponentSerializer.get()
+-                .toBuilder()
+-                // Use a custom legacy hover event deserializer since we don't use any of this data anyway, and
+-                // fixes issues where legacy hover events throw deserialization errors
+-                .legacyHoverEventSerializer(new DummyLegacyHoverEventSerializer())
+-                .build();
++            .toBuilder()
++            // Use a custom legacy hover event deserializer since we don't use any of this data anyway, and
++            // fixes issues where legacy hover events throw deserialization errors
++            .legacyHoverEventSerializer(new DummyLegacyHoverEventSerializer())
++            .build();
+         GSON_SERIALIZER = new GsonComponentSerializerWrapper(source);
+         // Tell MCProtocolLib to use this serializer, too.
+         DefaultComponentSerializer.set(GSON_SERIALIZER);
+@@ -138,13 +139,13 @@ public class MessageTranslator {
+ 
+         // Can be removed once Adventure 1.15.0 is released (see https://github.com/KyoriPowered/adventure/pull/954)
+         ComponentFlattener flattener = ComponentFlattener.basic().toBuilder()
+-                .mapper(ScoreComponent.class, component -> "")
+-                .build();
++            .mapper(ScoreComponent.class, component -> "")
++            .build();
+ 
+         BEDROCK_SERIALIZER = LegacyComponentSerializer.legacySection().toBuilder()
+-                .formats(formats)
+-                .flattener(flattener)
+-                .build();
++            .formats(formats)
++            .flattener(flattener)
++            .build();
+ 
+         // cache all the legacy character codes
+         StringBuilder colorBuilder = new StringBuilder();
+@@ -245,19 +246,28 @@ public class MessageTranslator {
              return message;
          }
  
@@ -58,3 +91,14 @@ index 152bf41600c0b190947351a132db4138f1cca8a3..f11537f49163dcd727c4a369799cb4d3
      }
  
      public static String convertMessageLenient(String message) {
+@@ -352,8 +362,8 @@ public class MessageTranslator {
+             // As of 1.19 - do this to apply all the styling for signed messages
+             // Though, Bedrock cannot care about the signed stuff.
+             TranslatableComponent.Builder withDecoration = Component.translatable()
+-                    .key(chat.translationKey())
+-                    .style(ChatDecoration.getStyle(chat));
++                .key(chat.translationKey())
++                .style(ChatDecoration.getStyle(chat));
+             List<ChatTypeDecoration.Parameter> parameters = chat.parameters();
+             List<Component> args = new ArrayList<>(3);
+             if (parameters.contains(ChatDecoration.Parameter.TARGET)) {
