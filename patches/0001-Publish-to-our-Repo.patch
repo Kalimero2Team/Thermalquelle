@@ -19,13 +19,6 @@ index eca5877216da6dc2bd3bdca95a9b8db00ce78522..4588ee52176d093530d4de716435eac0
  }
  
  publishing {
-diff --git a/core/src/main/resources/mappings b/core/src/main/resources/mappings
-index 93f207e7e9d73f58a7c8902f7deda9dcb0524c8e..698fd2b108a9e53f1e47b8cfdc122651b70d6059 160000
---- a/core/src/main/resources/mappings
-+++ b/core/src/main/resources/mappings
-@@ -1 +1 @@
--Subproject commit 93f207e7e9d73f58a7c8902f7deda9dcb0524c8e
-+Subproject commit 698fd2b108a9e53f1e47b8cfdc122651b70d6059
 diff --git a/gradle.properties b/gradle.properties
 index 1ee0e12ccef8cf5811ad6cba52df96f0b8035911..82179bcda983d0f6182ab7281fabb9073db57e4f 100644
 --- a/gradle.properties
