@@ -5,7 +5,7 @@ Subject: [PATCH] Fix Legacy Formatting Issue with Item Names
 
 
 diff --git a/core/src/main/java/org/geysermc/geyser/translator/text/MessageTranslator.java b/core/src/main/java/org/geysermc/geyser/translator/text/MessageTranslator.java
-index eca86ff3272a3db7fdf96f468d201149bed34b8f..5054b3761a03bd639bae65342acb334b700def96 100644
+index 5c3b21b5a8feb74315129961aa38ff74ee962b79..15bcd9bd8568b1b577ca19db74874ed18300c242 100644
 --- a/core/src/main/java/org/geysermc/geyser/translator/text/MessageTranslator.java
 +++ b/core/src/main/java/org/geysermc/geyser/translator/text/MessageTranslator.java
 @@ -51,6 +51,7 @@ import org.geysermc.geyser.text.DummyLegacyHoverEventSerializer;
@@ -52,7 +52,7 @@ index eca86ff3272a3db7fdf96f468d201149bed34b8f..5054b3761a03bd639bae65342acb334b
  
          // cache all the legacy character codes
          StringBuilder colorBuilder = new StringBuilder();
-@@ -231,19 +232,28 @@ public class MessageTranslator {
+@@ -243,19 +244,28 @@ public class MessageTranslator {
              return message;
          }
  
@@ -91,7 +91,7 @@ index eca86ff3272a3db7fdf96f468d201149bed34b8f..5054b3761a03bd639bae65342acb334b
      }
  
      public static String convertMessageLenient(String message) {
-@@ -338,8 +348,8 @@ public class MessageTranslator {
+@@ -350,8 +360,8 @@ public class MessageTranslator {
              // As of 1.19 - do this to apply all the styling for signed messages
              // Though, Bedrock cannot care about the signed stuff.
              TranslatableComponent.Builder withDecoration = Component.translatable()
