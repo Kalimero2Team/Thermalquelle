@@ -20,7 +20,7 @@ index eca5877216da6dc2bd3bdca95a9b8db00ce78522..4588ee52176d093530d4de716435eac0
  
  publishing {
 diff --git a/gradle.properties b/gradle.properties
-index 09943725b6a5f3d5f4057b484a40532a5ce8f3b9..31f0209356452e3758a638280a4f10c8db36467d 100644
+index 0a099d23dad6665d37453fe94c8e793a91983e43..bf836e96013475d47a64f277a9c8af2644ae2840 100644
 --- a/gradle.properties
 +++ b/gradle.properties
 @@ -9,7 +9,8 @@ org.gradle.vfs.watch=false
@@ -31,6 +31,6 @@ index 09943725b6a5f3d5f4057b484a40532a5ce8f3b9..31f0209356452e3758a638280a4f10c8
 -id=geyser
 +group=com.kalimero2.team
 +id=thermalquelle
- version=2.5.0-SNAPSHOT
+ version=2.5.1-SNAPSHOT
 +
  description=Allows for players from Minecraft: Bedrock Edition to join Minecraft: Java Edition servers.
