@@ -20,17 +20,17 @@ index eca5877216da6dc2bd3bdca95a9b8db00ce78522..4588ee52176d093530d4de716435eac0
  
  publishing {
 diff --git a/gradle.properties b/gradle.properties
-index 0a099d23dad6665d37453fe94c8e793a91983e43..bf836e96013475d47a64f277a9c8af2644ae2840 100644
+index 5557e53caf80c0c9016ee5c5a9ab81eb5f023aeb..74f0e801b88174a801cfc9ad7d1c7590a8647401 100644
 --- a/gradle.properties
 +++ b/gradle.properties
-@@ -9,7 +9,8 @@ org.gradle.vfs.watch=false
- # TODO remove once architectury loom updates to 1.8
- loom.ignoreDependencyLoomVersionValidation=true
+@@ -6,7 +6,8 @@ org.gradle.parallel=true
+ org.gradle.caching=true
+ org.gradle.vfs.watch=false
  
 -group=org.geysermc
 -id=geyser
 +group=com.kalimero2.team
 +id=thermalquelle
- version=2.5.1-SNAPSHOT
+ version=2.6.1-SNAPSHOT
 +
  description=Allows for players from Minecraft: Bedrock Edition to join Minecraft: Java Edition servers.
