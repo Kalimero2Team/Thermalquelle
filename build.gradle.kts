@@ -1,5 +1,5 @@
 plugins {
-    id("ca.stellardrift.gitpatcher") version "1.1.0"
+    id("ca.stellardrift.gitpatcher") version "1.1.1"
 }
 
 gitPatcher.patchedRepos.create("geyser") {
