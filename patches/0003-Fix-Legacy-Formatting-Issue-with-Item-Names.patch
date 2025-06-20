@@ -5,10 +5,10 @@ Subject: [PATCH] Fix Legacy Formatting Issue with Item Names
 
 
 diff --git a/core/src/main/java/org/geysermc/geyser/translator/text/MessageTranslator.java b/core/src/main/java/org/geysermc/geyser/translator/text/MessageTranslator.java
-index 62a6aa00b4b2b8562f58a8a6243ba9fc374712c8..65fe969fbaab0438fb2ec456f44c49cb7a524b02 100644
+index 2166062f82ece5505be113d4a4e82eae10bd4d7d..a98f6eeadeaab81ab4fb290933aba59c101b9b99 100644
 --- a/core/src/main/java/org/geysermc/geyser/translator/text/MessageTranslator.java
 +++ b/core/src/main/java/org/geysermc/geyser/translator/text/MessageTranslator.java
-@@ -50,6 +50,7 @@ import org.geysermc.geyser.text.DummyLegacyHoverEventSerializer;
+@@ -51,6 +51,7 @@ import org.geysermc.geyser.text.DummyLegacyHoverEventSerializer;
  import org.geysermc.geyser.text.GeyserLocale;
  import org.geysermc.geyser.text.GsonComponentSerializerWrapper;
  import org.geysermc.geyser.text.MinecraftTranslationRegistry;
@@ -16,7 +16,7 @@ index 62a6aa00b4b2b8562f58a8a6243ba9fc374712c8..65fe969fbaab0438fb2ec456f44c49cb
  import org.geysermc.mcprotocollib.protocol.data.DefaultComponentSerializer;
  import org.geysermc.mcprotocollib.protocol.data.game.Holder;
  import org.geysermc.mcprotocollib.protocol.data.game.chat.ChatType;
-@@ -80,11 +81,11 @@ public class MessageTranslator {
+@@ -82,11 +83,11 @@ public class MessageTranslator {
      static {
          // Temporary fix for https://github.com/KyoriPowered/adventure/issues/447 - TODO resolve properly
          GsonComponentSerializer source = DefaultComponentSerializer.get()
@@ -33,7 +33,7 @@ index 62a6aa00b4b2b8562f58a8a6243ba9fc374712c8..65fe969fbaab0438fb2ec456f44c49cb
          GSON_SERIALIZER = new GsonComponentSerializerWrapper(source);
          // Tell MCProtocolLib to use this serializer, too.
          DefaultComponentSerializer.set(GSON_SERIALIZER);
-@@ -110,13 +111,13 @@ public class MessageTranslator {
+@@ -112,13 +113,13 @@ public class MessageTranslator {
  
          // Can be removed once Adventure 1.15.0 is released (see https://github.com/KyoriPowered/adventure/pull/954)
          ComponentFlattener flattener = ComponentFlattener.basic().toBuilder()
@@ -52,7 +52,7 @@ index 62a6aa00b4b2b8562f58a8a6243ba9fc374712c8..65fe969fbaab0438fb2ec456f44c49cb
  
          // cache all the legacy character codes
          StringBuilder colorBuilder = new StringBuilder();
-@@ -274,19 +275,28 @@ public class MessageTranslator {
+@@ -276,19 +277,28 @@ public class MessageTranslator {
              return message;
          }
  
@@ -91,7 +91,7 @@ index 62a6aa00b4b2b8562f58a8a6243ba9fc374712c8..65fe969fbaab0438fb2ec456f44c49cb
      }
  
      public static String convertMessageLenient(String message) {
-@@ -381,8 +391,8 @@ public class MessageTranslator {
+@@ -397,8 +407,8 @@ public class MessageTranslator {
              // As of 1.19 - do this to apply all the styling for signed messages
              // Though, Bedrock cannot care about the signed stuff.
              TranslatableComponent.Builder withDecoration = Component.translatable()
