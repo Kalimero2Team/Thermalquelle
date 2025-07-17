@@ -24,7 +24,7 @@ jobs:
       - name: "setup gradle"
         uses: "gradle/actions/setup-gradle@v4"
       - name: "apply patches"
-        run: "git submodule update --init && ./gradlew applyPatches"
+        run: "git submodule update --init && make applyPatches"
       - name: "build"
         working-directory: "patched-geyser"
         run: "./gradlew build -x check"
