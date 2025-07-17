@@ -1,11 +1,11 @@
-From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From 9ad1943115c97629386e6824f98ae22b6b1a41ad Mon Sep 17 00:00:00 2001
 From: byquanton <32410361+byquanton@users.noreply.github.com>
 Date: Wed, 4 Oct 2023 21:36:52 +0200
 Subject: [PATCH] Add Thermalquelle Branding
 
 
 diff --git a/core/src/main/java/org/geysermc/geyser/GeyserImpl.java b/core/src/main/java/org/geysermc/geyser/GeyserImpl.java
-index 65e0ed4e523e021492f34a3c6df7cfe99fc11f70..f9c6e28bd131a4d82d5efee05ebcf8dcc454a166 100644
+index 65e0ed4e5..f9c6e28bd 100644
 --- a/core/src/main/java/org/geysermc/geyser/GeyserImpl.java
 +++ b/core/src/main/java/org/geysermc/geyser/GeyserImpl.java
 @@ -137,6 +137,7 @@ public class GeyserImpl implements GeyserApi, EventRegistrar {
@@ -26,7 +26,7 @@ index 65e0ed4e523e021492f34a3c6df7cfe99fc11f70..f9c6e28bd131a4d82d5efee05ebcf8dc
          if (IS_DEV) {
              logger.info(GeyserLocale.getLocaleStringLog("geyser.core.dev_build", "https://discord.gg/geysermc"));
 diff --git a/core/src/main/java/org/geysermc/geyser/command/defaults/VersionCommand.java b/core/src/main/java/org/geysermc/geyser/command/defaults/VersionCommand.java
-index 8d34c1bf047f299d1f1f8efb548e1001674ff163..cf4000ab687e4570f3c685701f94e067840b6c54 100644
+index 8d34c1bf0..cf4000ab6 100644
 --- a/core/src/main/java/org/geysermc/geyser/command/defaults/VersionCommand.java
 +++ b/core/src/main/java/org/geysermc/geyser/command/defaults/VersionCommand.java
 @@ -70,8 +70,10 @@ public class VersionCommand extends GeyserCommand {

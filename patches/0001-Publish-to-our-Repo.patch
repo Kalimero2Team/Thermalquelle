@@ -1,11 +1,11 @@
-From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From eff03f5832c1407c847446d49f7c03aedbc71341 Mon Sep 17 00:00:00 2001
 From: byquanton <32410361+byquanton@users.noreply.github.com>
 Date: Mon, 2 Oct 2023 11:43:24 +0000
 Subject: [PATCH] Publish to our Repo
 
 
 diff --git a/build-logic/src/main/kotlin/geyser.publish-conventions.gradle.kts b/build-logic/src/main/kotlin/geyser.publish-conventions.gradle.kts
-index eca5877216da6dc2bd3bdca95a9b8db00ce78522..4588ee52176d093530d4de716435eac07dd4631d 100644
+index eca587721..4588ee521 100644
 --- a/build-logic/src/main/kotlin/geyser.publish-conventions.gradle.kts
 +++ b/build-logic/src/main/kotlin/geyser.publish-conventions.gradle.kts
 @@ -4,8 +4,8 @@ plugins {
@@ -19,17 +19,17 @@ index eca5877216da6dc2bd3bdca95a9b8db00ce78522..4588ee52176d093530d4de716435eac0
  }
  
  publishing {
-diff --git a/gradle.properties b/gradle.properties
-index 18182b34c343c1a53e1a4dc76a38b9ca2129b296..fc1220a2e45ea300c736c584799762f5a7b521df 100644
---- a/gradle.properties
-+++ b/gradle.properties
-@@ -6,7 +6,7 @@ org.gradle.parallel=true
- org.gradle.caching=true
- org.gradle.vfs.watch=false
- 
--group=org.geysermc
--id=geyser
-+group=com.kalimero2.team
-+id=thermalquelle
- version=2.8.1-SNAPSHOT
- description=Allows for players from Minecraft: Bedrock Edition to join Minecraft: Java Edition servers.
+diff --git a/core/src/main/resources/languages b/core/src/main/resources/languages
+index 40253e5f3..61642604b 160000
+--- a/core/src/main/resources/languages
++++ b/core/src/main/resources/languages
+@@ -1 +1 @@
+-Subproject commit 40253e5f317ede6020aa563d0823c54c37380ebf
++Subproject commit 61642604b8af1673f714087837f0c4287bfdc492
+diff --git a/core/src/main/resources/mappings b/core/src/main/resources/mappings
+index 8002ed6ed..f4be12330 160000
+--- a/core/src/main/resources/mappings
++++ b/core/src/main/resources/mappings
+@@ -1 +1 @@
+-Subproject commit 8002ed6ed859686b9f544e626ad01995fc3ba7f1
++Subproject commit f4be1233040b977ddc1b40382c2cc778655a5f35

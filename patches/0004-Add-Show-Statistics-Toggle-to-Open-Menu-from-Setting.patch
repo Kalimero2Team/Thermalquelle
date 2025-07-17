@@ -1,11 +1,11 @@
-From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From ae6a8b8e15fa810ae49dafbca2909872a33cc296 Mon Sep 17 00:00:00 2001
 From: byquanton <32410361+byquanton@users.noreply.github.com>
 Date: Sat, 13 Jan 2024 17:48:14 +0100
 Subject: [PATCH] Add Show Statistics Toggle to Open Menu from Settings
 
 
 diff --git a/core/src/main/java/org/geysermc/geyser/util/SettingsUtils.java b/core/src/main/java/org/geysermc/geyser/util/SettingsUtils.java
-index cb6ad6f0c2fdd483b6725d3b5ce62fa43ca65216..b093585e5490a3a2720f95527e2c511fc4be1633 100644
+index cb6ad6f0c..b093585e5 100644
 --- a/core/src/main/java/org/geysermc/geyser/util/SettingsUtils.java
 +++ b/core/src/main/java/org/geysermc/geyser/util/SettingsUtils.java
 @@ -36,6 +36,10 @@ import org.geysermc.geyser.session.GeyserSession;

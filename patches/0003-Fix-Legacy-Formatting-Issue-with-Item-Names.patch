@@ -1,11 +1,11 @@
-From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From d2e72a411ebca601fb651d8ede2d3e295a80d955 Mon Sep 17 00:00:00 2001
 From: byquanton <32410361+byquanton@users.noreply.github.com>
 Date: Sun, 15 Oct 2023 15:31:47 +0200
 Subject: [PATCH] Fix Legacy Formatting Issue with Item Names
 
 
 diff --git a/core/src/main/java/org/geysermc/geyser/translator/text/MessageTranslator.java b/core/src/main/java/org/geysermc/geyser/translator/text/MessageTranslator.java
-index 695a1150eb614e22030911c25b971ec4721c9a1c..a92cce3ab22faa8fd968ff52e455006db6e17d19 100644
+index 695a1150e..a92cce3ab 100644
 --- a/core/src/main/java/org/geysermc/geyser/translator/text/MessageTranslator.java
 +++ b/core/src/main/java/org/geysermc/geyser/translator/text/MessageTranslator.java
 @@ -51,6 +51,7 @@ import org.geysermc.geyser.text.DummyLegacyHoverEventSerializer;
