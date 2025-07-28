@@ -1,4 +1,4 @@
-From d2e72a411ebca601fb651d8ede2d3e295a80d955 Mon Sep 17 00:00:00 2001
+From f2b5274f6c7144525f6c61822e8444a719dcc325 Mon Sep 17 00:00:00 2001
 From: byquanton <32410361+byquanton@users.noreply.github.com>
 Date: Sun, 15 Oct 2023 15:31:47 +0200
 Subject: [PATCH] Fix Legacy Formatting Issue with Item Names
