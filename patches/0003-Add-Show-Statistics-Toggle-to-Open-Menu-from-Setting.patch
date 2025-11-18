@@ -1,11 +1,11 @@
-From 5e55c964d1c5640f38eb7f06ef0d8160dc62b938 Mon Sep 17 00:00:00 2001
+From 6e42f2938feb204c60a502f6b075035fa4eb44db Mon Sep 17 00:00:00 2001
 From: byquanton <32410361+byquanton@users.noreply.github.com>
 Date: Sat, 13 Jan 2024 17:48:14 +0100
 Subject: [PATCH] Add Show Statistics Toggle to Open Menu from Settings
 
 
 diff --git a/core/src/main/java/org/geysermc/geyser/util/SettingsUtils.java b/core/src/main/java/org/geysermc/geyser/util/SettingsUtils.java
-index cb6ad6f0c..b093585e5 100644
+index 34b23a93d..6bba04da6 100644
 --- a/core/src/main/java/org/geysermc/geyser/util/SettingsUtils.java
 +++ b/core/src/main/java/org/geysermc/geyser/util/SettingsUtils.java
 @@ -36,6 +36,10 @@ import org.geysermc.geyser.session.GeyserSession;
@@ -21,8 +21,8 @@ index cb6ad6f0c..b093585e5 100644
      /**
 @@ -56,13 +60,18 @@ public class SettingsUtils {
          boolean showCoordinates = session.getPreferencesCache().isAllowShowCoordinates();
-         boolean cooldownShown = CooldownUtils.getDefaultShowCooldown() != CooldownUtils.CooldownType.DISABLED;
-         boolean customSkulls = session.getGeyser().getConfig().isAllowCustomSkulls();
+         boolean cooldownShown = session.getGeyser().config().gameplay().showCooldown() != CooldownUtils.CooldownType.DISABLED;
+         boolean customSkulls = session.getGeyser().config().gameplay().maxVisibleCustomSkulls() != 0;
 +        boolean showStatistics = true;
  
          // Only show the client title if any of the client settings are available
